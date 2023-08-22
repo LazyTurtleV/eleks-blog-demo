@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';;
 
 const router = createBrowserRouter([
   {
-    element: <div>s</div>,
+    path: '/',
+    loader () {
+      throw new redirect('stories')
+    }
+  },
+  {
     path: 'stories',
     element: <div>stories</div>
   },
