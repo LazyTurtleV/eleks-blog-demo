@@ -13,16 +13,10 @@ module.exports = {
         template: './public/index.html',
         filename: './index.html',
     }),
-    new webpack.ProvidePlugin({
-      process: 'process/browser'
-    })
   ],
   devServer: {
     port: 3030,
   },
-  ignoreWarnings: [
-    /only default export is available soon/,
-  ],
   module: {
     rules: [
       {
