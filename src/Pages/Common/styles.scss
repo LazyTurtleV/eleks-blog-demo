@@ -7,6 +7,7 @@
     align-items: center;
     padding-left: 24px;
     padding-right: 24px;
+    justify-content: space-between;
 
     logo {
         display: flex;
@@ -21,5 +22,11 @@
         :last-child {
             color: #60A1FF;
         }
+    }
+    img {
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        background-color: white;
     }
 }
