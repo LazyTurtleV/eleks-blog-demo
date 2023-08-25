@@ -20,7 +20,7 @@ export function AuthContext({ children }) {
     })
 
     const login = (login, password) => {
-        requestToAuthIdentityManager({ login, password }).then(({ acess_token }) => setAuthInfo({
+        requestToAuthIdentityManager({ login, password }).then(({ access_token }) => setAuthInfo({
             isAuthorized: true,
             access_token,
         }))
