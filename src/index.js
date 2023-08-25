@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';import Header from './Pages/Common/Header';
+import Login from './Pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'login',
-    element: <div>Login</div>
+    element: <Login />
   },
   {
     path: 'signup',
@@ -34,6 +35,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <div style={{ flexDirection: 'column', display: 'flex', alignContent: 'end'}}>
+      <Header/>
+      <RouterProvider router={router}/>
+    </div>
   </React.StrictMode>
 );
