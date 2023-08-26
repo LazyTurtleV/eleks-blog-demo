@@ -42,7 +42,6 @@ root.render(
     <div
       style={{ flexDirection: 'column', display: 'flex', alignContent: 'end' }}
     >
-      <Header />
       <RouterProvider router={router} />
     </div>
   </React.StrictMode>
