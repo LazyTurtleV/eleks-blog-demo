@@ -1,34 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';import { AuthContext } from './Contexts/AuthContext';
-;
+import './index.css';
+
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+} from 'react-router-dom';
+import Login from './Pages/Login';
+import { AuthContext } from './Contexts/AuthContext';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    loader () {
-      throw new redirect('stories')
-    }
+    loader() {
+      throw new redirect('stories');
+    },
   },
   {
     path: 'stories',
-    element: <div>stories</div>
+    element: <div>stories</div>,
   },
   {
-    element: <div>s</div>,
     path: '/stories/:storyId',
-    element: <div>A particular story</div>
+    element: <div>A particular story</div>,
   },
   {
     path: 'login',
-    element: <div>Login</div>
+    element: <Login />,
   },
   {
     path: 'signup',
-    element: <div>sign up</div>
-  }
-])
+    element: <div>Sign up</div>,
+  },
+  {
+    path: 'profile',
+    element: <div>Profile</div>,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
