@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';;
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';import { AuthContext } from './Contexts/AuthContext';
+;
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <AuthContext>
+      <RouterProvider router={router}/>
+    </AuthContext>
   </React.StrictMode>
 );
