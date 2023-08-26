@@ -1,7 +1,7 @@
 .login-form {
     display: flex;
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 16px;
     margin-left: 43px;
     margin-right: 43px;
     margin-bottom: 40px;
@@ -94,5 +94,9 @@
         color: #3884F2;
         text-decoration: underline;
         border: none;
+    }
+    input[type="button"]:hover {
+        opacity: 0.8;
+        transition: 120ms ease-in-out;
     }
 }
