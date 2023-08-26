@@ -5,6 +5,7 @@ import './styles.scss';
 import FormContainer from '../Common/FormContainer';
 import { useAuthContext } from '../../Contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import FormField from '../Common/FormField';
 
 export default function Login() {
   const [email, setEmail] = useState();
@@ -74,7 +75,7 @@ function InlineInput({ label, type, name, placeholder, onChange }) {
   return (
     <span className={'inline-controll'}>
       <label htmlFor={name}>{label}</label>
-      <input
+      <FormField
         name={name}
         type={type}
         placeholder={placeholder}

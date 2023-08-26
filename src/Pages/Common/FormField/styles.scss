@@ -1,0 +1,11 @@
+input {
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #BFC4CA;
+}
+input:focus {
+    outline-color:  #3884F2;
+}
+input::placeholder {
+    color: #BFC4CA
+}
