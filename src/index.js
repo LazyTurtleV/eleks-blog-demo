@@ -8,7 +8,6 @@ import {
   redirect,
   RouterProvider,
 } from 'react-router-dom';
-import Header from './Pages/Common/Header';
 import Login from './Pages/Login';
 
 const router = createBrowserRouter([
@@ -32,7 +31,11 @@ const router = createBrowserRouter([
   },
   {
     path: 'signup',
-    element: <div>sign up</div>,
+    element: <div>Sign up</div>,
+  },
+  {
+    path: 'profile',
+    element: <div>Profile</div>,
   },
 ]);
 
