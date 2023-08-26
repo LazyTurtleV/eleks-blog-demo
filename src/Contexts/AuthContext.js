@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useState } from 'react';
 
-export const Context = createContext();
+export const Context = createContext({});
 
 export const useAuthContext = () => useContext(Context);
 
@@ -19,14 +19,15 @@ export function AuthContext({ children }) {
     isAuthorized: false,
   });
 
-  const login = (login, password) => {
-    requestToAuthIdentityManager({ login, password }).then(({ access_token }) =>
-      setAuthInfo({
-        isAuthorized: true,
-        access_token,
-      })
+  const login = useCallback((loginVar, password) => {
+    requestToAuthIdentityManager({ loginVar, password }).then(
+      ({ access_token }) =>
+        setAuthInfo({
+          isAuthorized: true,
+          access_token,
+        })
     );
-  };
+  }, []);
 
   return (
     <Context.Provider value={{ ...authInfo, login }}>

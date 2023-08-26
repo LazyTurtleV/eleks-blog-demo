@@ -9,6 +9,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import Login from './Pages/Login';
+import { AuthContext } from './Contexts/AuthContext';
 
 const router = createBrowserRouter([
   {
@@ -42,10 +43,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <div
-      style={{ flexDirection: 'column', display: 'flex', alignContent: 'end' }}
-    >
-      <RouterProvider router={router} />
-    </div>
+    <AuthContext>
+      <RouterProvider router={router}/>
+    </AuthContext>
   </React.StrictMode>
 );
