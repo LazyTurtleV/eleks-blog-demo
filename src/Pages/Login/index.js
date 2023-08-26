@@ -2,21 +2,52 @@ import React from 'react';
 
 import './styles.scss';
 
-import LoginHeader from './LoginHeader';
+import FormContainer from '../Common/FormContainer';
+
+function InlineInput({ label, type, name, placeholder }) {
+  return (
+    <span className={'inline-controll'}>
+      <label htmlFor={name}>{label}</label>
+      <input name={name} type={type} placeholder={placeholder} />
+    </span>
+  );
+}
+
+function Checkbox() {
+  return (
+    <span className={'checkbox-controll'}>
+      <input
+        type={'checkbox'}
+        name={'rememberMe'}
+        className={'checkbox'}
+        onChange={() => console.log('quadro')}
+      />
+      <label>Remember me</label>
+    </span>
+  );
+}
 
 export default function Login() {
   return (
-    <main className={'login-container'}>
-      <div className={'login-box'}>
-        <LoginHeader />
-        <form className={'login-form'}>
-          <h1>Log in</h1>
-          <label for={'email'}>Email</label>
-          <input name={'email'} type={'email'} />
-          <label for={'password'}>Password</label>
-          <input name={'password'} type={'password'} />
-        </form>
-      </div>
-    </main>
+    <FormContainer>
+      <form className={'login-form'}>
+        <h1>Log in</h1>
+        <InlineInput
+          label={'Email'}
+          name={'email'}
+          type={'email'}
+          placeholder={'Enter your email'}
+        />
+        <InlineInput
+          label={'Password'}
+          type={'password'}
+          name={'password'}
+          placeholder={'Enter your password'}
+        />
+        <Checkbox />
+        <input type={'submit'} value={'Log in'} />
+        <input type={'button'} value={'Forgot password?'} />
+      </form>
+    </FormContainer>
   );
 }
