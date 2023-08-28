@@ -100,7 +100,11 @@ export default function Signup() {
           onChange={onRepeatPasswordChange}
         />
         <input type={'submit'} value={'Create an account'} />
-        <input type={'button'} value={'I already have an account'} />
+        <input
+          type={'button'}
+          value={'I already have an account'}
+          onClick={() => navigate('/login')}
+        />
       </form>
     </FormContainer>
   );
