@@ -14,6 +14,7 @@ export default function FormField({
       <input
         name={name}
         type={type}
+        autoComplete={'on'}
         placeholder={placeholder}
         onChange={onChange}
         className={errors && 'error'}
