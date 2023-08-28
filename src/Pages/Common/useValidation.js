@@ -13,8 +13,10 @@ export default function useValidation(state, mandarotyFields, customValidator) {
           }
         }
 
-        if (!emptyFields.length) {
-          return () => submit(e);
+        const customValidation = customValidator?.(state) || {};
+
+        if (!emptyFields.length && !Object.keys(customValidation).length) {
+          submit(e);
         }
 
         const mandatoryFieldsErrors = emptyFields.reduce(
@@ -24,7 +26,7 @@ export default function useValidation(state, mandarotyFields, customValidator) {
 
         setErrors({
           ...mandatoryFieldsErrors,
-          ...(customValidator?.(state) || {}),
+          ...customValidation,
         });
       };
     },
