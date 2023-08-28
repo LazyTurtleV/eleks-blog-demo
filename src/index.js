@@ -11,6 +11,7 @@ import {
 import Login from './Pages/Login';
 import { AuthContext } from './Contexts/AuthContext';
 import Signup from './Pages/Signup';
+import Stories from './Pages/Stories';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'stories',
-    element: <div>stories</div>,
+    element: <Stories />,
   },
   {
     path: '/stories/:storyId',
