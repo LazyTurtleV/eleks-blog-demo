@@ -59,7 +59,6 @@ export default function Signup() {
   }, []);
 
   const submit = useCallback(() => {
-    console.log('HELLO?');
     navigate('/login');
   }, [navigate]);
 

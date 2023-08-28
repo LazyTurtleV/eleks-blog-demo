@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useReducer } from 'react';
 
 import './styles.scss';
 
@@ -7,37 +7,52 @@ import { useAuthContext } from '../../Contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import FormField from '../Common/FormField';
 import Checkbox from '../Common/Checkbox';
+import useValidation from '../Common/useValidation';
+
+const ACTION_TYPES = {
+  EMAIL_CHANGE: 'email',
+  PASSWORD_CHANGE: 'password',
+  ERROR: 'error',
+};
+
+function reducer(state, action) {
+  if (Object.values(ACTION_TYPES).includes(action.type)) {
+    return {
+      ...state,
+      [action.type]: action.payload,
+    };
+  }
+
+  return state;
+}
 
 export default function Login() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const navigate = useNavigate();
+  const [state, dispatch] = useReducer(reducer, {});
+  const { handleSubmit, errors = {} } = useValidation(state, [
+    'email',
+    'password',
+  ]);
   const { login, subscribeOnError, isAuthorized } = useAuthContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // eslint-disable-next-line no-alert
     subscribeOnError(() => window.alert('Error: wrong credentials'));
   }, [subscribeOnError]);
 
-  const changeEmail = useCallback(
-    (e) => {
-      setEmail(e.target.value);
-    },
-    [setEmail]
-  );
-  const changePassword = useCallback(
-    (e) => {
-      setPassword(e.target.value);
-    },
-    [setPassword]
-  );
+  const onEmailChange = useCallback((e) => {
+    dispatch({ type: ACTION_TYPES.EMAIL_CHANGE, payload: e.target.value });
+  }, []);
+  const onPasswordChange = useCallback((e) => {
+    dispatch({ type: ACTION_TYPES.PASSWORD_CHANGE, payload: e.target.value });
+  }, []);
 
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      login(email, password);
+      login(state.email, state.password);
     },
-    [email, password, login]
+    [state, login]
   );
 
   useEffect(() => {
@@ -48,20 +63,22 @@ export default function Login() {
 
   return (
     <FormContainer>
-      <form className={'login-form'} onSubmit={onSubmit}>
+      <form className={'login-form'} onSubmit={handleSubmit(onSubmit)}>
         <h1>Log in</h1>
         <InlineInput
           label={'Email'}
           name={'email'}
           type={'email'}
           placeholder={'Enter your email'}
-          onChange={changeEmail}
+          errors={errors.email}
+          onChange={onEmailChange}
         />
         <InlineInput
           label={'Password'}
           type={'password'}
           name={'password'}
-          onChange={changePassword}
+          errors={errors.password}
+          onChange={onPasswordChange}
           placeholder={'Enter your password'}
         />
         <CheckboxControl />
@@ -72,7 +89,7 @@ export default function Login() {
   );
 }
 
-function InlineInput({ label, type, name, placeholder, onChange }) {
+function InlineInput({ label, type, name, placeholder, onChange, errors }) {
   return (
     <span className={'inline-controll'}>
       <label htmlFor={name}>{label}</label>
@@ -80,6 +97,7 @@ function InlineInput({ label, type, name, placeholder, onChange }) {
         name={name}
         type={type}
         placeholder={placeholder}
+        errors={errors}
         onChange={onChange}
       />
     </span>
