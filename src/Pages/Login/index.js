@@ -5,6 +5,8 @@ import './styles.scss';
 import FormContainer from '../Common/FormContainer';
 import { useAuthContext } from '../../Contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import FormField from '../Common/FormField';
+import Checkbox from '../Common/Checkbox';
 
 export default function Login() {
   const [email, setEmail] = useState();
@@ -62,7 +64,7 @@ export default function Login() {
           onChange={changePassword}
           placeholder={'Enter your password'}
         />
-        <Checkbox />
+        <CheckboxControl />
         <input type={'submit'} value={'Log in'} />
         <input type={'button'} value={'Forgot password?'} />
       </form>
@@ -74,7 +76,7 @@ function InlineInput({ label, type, name, placeholder, onChange }) {
   return (
     <span className={'inline-controll'}>
       <label htmlFor={name}>{label}</label>
-      <input
+      <FormField
         name={name}
         type={type}
         placeholder={placeholder}
@@ -84,15 +86,10 @@ function InlineInput({ label, type, name, placeholder, onChange }) {
   );
 }
 
-function Checkbox({ onChange }) {
+function CheckboxControl({ onChange }) {
   return (
     <span className={'checkbox-controll'}>
-      <input
-        type={'checkbox'}
-        name={'rememberMe'}
-        className={'checkbox'}
-        onChange={onChange}
-      />
+      <Checkbox />
       <label>Remember me</label>
     </span>
   );

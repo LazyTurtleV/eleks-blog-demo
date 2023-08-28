@@ -21,51 +21,10 @@
             font-size: 14px;
             color: #5F6871;
         }
-        input {
-            padding: 12px;
-            border-radius: 4px;
-            border: 1px solid #BFC4CA;
-        }
-        input:focus {
-            outline-color:  #3884F2;
-        }
-        input::placeholder {
-            color: #BFC4CA
-        }
     }
     .checkbox-controll {
         display: flex;
         align-items: center;
-        input[type="checkbox"] {
-            appearance: none;
-            cursor: pointer;
-            margin: 0;
-            color: #BFC4CA;
-            width: 24px;
-            height: 24px;
-            border: 1px solid #BFC4CA;
-            border-radius: 4px;
-        }
-        input[type="checkbox"]:focus {
-            outline-color:  #3884F2;
-        }
-        input[type="checkbox"]::before {
-            content: "";
-            display: flex;
-            width: 24px;
-            height: 24px;
-            transform: scale(0);
-            transition: 120ms transform ease-in-out;
-            background-color: white;
-        }
-        input[type="checkbox"]:checked::before {
-            transform: scale(1) translateX(calc(100% / 4)) translateY(calc(100% / 4));
-            clip-path: path('M3.91006 7.49585L1.7071 5.29291C1.31658 4.90239 0.683416 4.90239 0.292893 5.29291C-0.0976309 5.68343 -0.0976309 6.3166 0.292893 6.70712L3.29288 9.70709C3.7168 10.131 4.4159 10.0892 4.7863 9.61781L11.7863 1.61786C12.1275 1.18359 12.0521 0.554936 11.6178 0.213723C11.1835 -0.127489 10.5549 -0.0520504 10.2136 0.38222L3.91006 7.49585Z');
-        }
-        input[type="checkbox"]:checked {
-            border-color: #3884F2;
-            background-color: #3884F2;
-        }
         label {
             margin-left: 16px;
         }
