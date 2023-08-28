@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import Login from './Pages/Login';
 import { AuthContext } from './Contexts/AuthContext';
+import Signup from './Pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'signup',
-    element: <div>Sign up</div>,
+    element: <Signup />,
   },
   {
     path: 'profile',
