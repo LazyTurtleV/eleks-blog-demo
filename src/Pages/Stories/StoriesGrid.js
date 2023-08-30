@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import DataLayer from '../../Services/DataLayer';
 
 export default function StoriesGrid() {
@@ -10,16 +11,15 @@ export default function StoriesGrid() {
 
   return (
     <div>
-      {stories.map((story, i) => {
-        console.log(story.img);
+      {stories.map((story, i) => (
         //the order will never change so index as a key is ok, I guess
-        return <StoryItem key={i} img={story.img} author={story.author} />;
-      })}
+        <StoryItem key={i} {...story} />
+      ))}
     </div>
   );
 }
 
-function StoryItem({ img, header, author: { name } }) {
+function StoryItem({ img, header, text, author: { name } }) {
   return (
     <section>
       <header>
@@ -27,6 +27,7 @@ function StoryItem({ img, header, author: { name } }) {
         <img src={img} alt={'story_image'} />
         <h1>{header}</h1>
       </header>
+      <p>{text}</p>
     </section>
   );
 }
