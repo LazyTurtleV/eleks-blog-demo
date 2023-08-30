@@ -1,5 +1,4 @@
 class ApiMock {
-  #loading = true;
   #dataSample = [
     {
       author: {
