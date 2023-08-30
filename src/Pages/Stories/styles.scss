@@ -1,0 +1,15 @@
+main {
+    background-color: #FAFAFB;
+    display: flex;
+    flex: 1;
+    align-self: stretch;
+
+    section {
+        header {
+            img {
+                height: 100px;
+                width: 283px;
+            }
+        }
+    }
+}
