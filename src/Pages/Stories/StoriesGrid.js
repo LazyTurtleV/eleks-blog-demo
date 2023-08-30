@@ -5,11 +5,7 @@ export default function StoriesGrid() {
   const [stories, setStories] = useState([]);
 
   useEffect(() => {
-    DataLayer.getArticles().then((d) => {
-      if (Array.isArray(d)) {
-        setStories(d);
-      }
-    });
+    DataLayer.getArticles().then((d) => setStories(d));
   }, []);
 
   return (
@@ -24,7 +20,6 @@ export default function StoriesGrid() {
 }
 
 function StoryItem({ img, header, author: { name } }) {
-  // console.log(img);
   return (
     <section>
       <header>
