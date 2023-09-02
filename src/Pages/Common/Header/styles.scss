@@ -59,7 +59,13 @@
             border: none;
         }
     }
-    img {
+    .search-icon {
+        height: 24px;
+        width: 24px;
+        margin-left: auto;
+        margin-right: 22px;
+    }
+    .user-avatar {
         border-radius: 50%;
         width: 32px;
         height: 32px;
