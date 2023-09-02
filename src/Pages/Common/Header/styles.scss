@@ -22,43 +22,42 @@
             color: #60A1FF;
             margin-right: 30px;
         }
+    }
+    .search-bar {
+        display: flex;
+        width:30%;
+        margin-right: auto;
+        align-items: center;
+        flex-shrink: 1;
+        background-color: #FFFFFF1A;
+        border-radius: 6px;
+        padding: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+        gap: 8px;
 
-        .search-bar {
-            display: flex;
-            align-items: center;
-            flex-shrink: 1;
-            background-color: #FFFFFF1A;
-            border-radius: 6px;
-            padding: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            gap: 8px;
-
-            .input-icon {
-                background-color: transparent;
-                width: 15px;
-                height: 15px;
-            }
-            input {
-                background-color: transparent;
-                min-width: 500px;
-                display: flex;
-                flex-shrink: 1;
-                justify-self: flex-end;
-                border: none;
-                border-radius: 6px;
-                color: white;
-            }
-            input::placeholder {
-                color: white;
-                font-size: 12;
-            }
-            input:focus {
-                outline: none;
-                border: none;
-            }
+        .input-icon {
+            background-color: transparent;
+            width: 15px;
+            height: 15px;
         }
-
+        input {
+            background-color: transparent;
+            display: flex;
+            flex-shrink: 1;
+            justify-self: flex-end;
+            border: none;
+            border-radius: 6px;
+            color: white;
+        }
+        input::placeholder {
+            color: white;
+            font-size: 12;
+        }
+        input:focus {
+            outline: none;
+            border: none;
+        }
     }
     img {
         border-radius: 50%;
