@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import image from '../../../../assets/avatar.png';
 
-import './styles.scss';
+import styles from './styles.module.scss';
 import Logo from './Logo';
 import SearchBar from './Searchbar';
 import useBreakpoints from '../useBreakpoints';
@@ -14,7 +14,7 @@ export default function Header() {
   const navigate = useNavigate();
   const { breakpoint } = useBreakpoints(screenConfig);
   return (
-    <header className="container">
+    <header className={styles.container}>
       <Logo />
       {['large', 'medium'].includes(breakpoint) ? (
         <SearchBar />
@@ -22,7 +22,7 @@ export default function Header() {
         <SearchIcon />
       )}
       <img
-        className={'user-avatar'}
+        className={styles['user-avatar']}
         src={image}
         alt={'Avatar'}
         onClick={() => navigate('/profile')}
