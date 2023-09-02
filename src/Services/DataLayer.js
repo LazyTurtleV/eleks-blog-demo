@@ -3,7 +3,7 @@ class ApiMock {
     {
       author: {
         name: 'Immam Farrhouk',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/268/42',
       },
       date: '2 July 2020',
       header: 'The way to save yourself financially',
@@ -16,7 +16,7 @@ class ApiMock {
     {
       author: {
         name: 'Andy Gardner',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/269/42',
       },
       date: '2 July 2020',
       img: 'https://picsum.photos/seed/2/283/100',
@@ -31,7 +31,7 @@ class ApiMock {
     {
       author: {
         name: 'Allan Hamilton',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/270/42',
       },
       date: '2 July 2020',
       img: 'https://picsum.photos/seed/3/283/100',
@@ -45,7 +45,7 @@ class ApiMock {
     {
       author: {
         name: 'Allan Hamilton',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/271/42',
       },
       date: '2 July 2020',
       img: 'https://picsum.photos/seed/4/283/100',
@@ -58,7 +58,7 @@ class ApiMock {
     {
       author: {
         name: 'Andy Gardner',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/272/42',
       },
       date: '2 July 2020',
       img: 'https://picsum.photos/seed/5/283/100',
@@ -73,7 +73,7 @@ class ApiMock {
     {
       author: {
         name: 'Allan Hamilton',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/273/42',
       },
       date: '2 July 2020',
       img: 'https://picsum.photos/seed/6/283/100',
@@ -87,7 +87,7 @@ class ApiMock {
     {
       author: {
         name: 'Immam Farrhouk',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/274/42',
       },
       date: '2 July 2020',
       header: 'The way to save yourself financially',
@@ -100,7 +100,7 @@ class ApiMock {
     {
       author: {
         name: 'Andy Gardner',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/274/42',
       },
       date: '2 July 2020',
       img: 'https://picsum.photos/seed/8/283/100',
@@ -115,7 +115,7 @@ class ApiMock {
     {
       author: {
         name: 'Immam Farrhouk',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/275/42',
       },
       date: '2 July 2020',
       img: 'https://picsum.photos/seed/9/283/100',
@@ -129,7 +129,7 @@ class ApiMock {
     {
       author: {
         name: 'Immam Farrhouk',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/276/42',
       },
       date: '2 July 2020',
       img: 'https://picsum.photos/seed/10/283/100',
@@ -143,7 +143,7 @@ class ApiMock {
     {
       author: {
         name: 'Immam Farrhouk',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/277/42',
       },
       date: '2 July 2020',
       header: 'The way to save yourself financially',
@@ -156,7 +156,7 @@ class ApiMock {
     {
       author: {
         name: 'Immam Farrhouk',
-        picture: 'https://picsum.photos/42',
+        picture: 'https://picsum.photos/seed/278/42',
       },
       date: '2 July 2020',
       img: 'https://picsum.photos/seed/12/283/100',
