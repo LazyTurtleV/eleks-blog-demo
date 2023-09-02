@@ -8,13 +8,11 @@ import Logo from './Logo';
 import SearchBar from './Searchbar';
 import useBreakpoints from '../useBreakpoints';
 import SearchIcon from './SearchIcon';
+import screenConfig from '../Constants/screenConfig';
 
 export default function Header() {
   const navigate = useNavigate();
-  const { breakpoint } = useBreakpoints({
-    lowerBound: '500px',
-    upperBound: '900px',
-  });
+  const { breakpoint } = useBreakpoints(screenConfig);
   return (
     <header className="container">
       <Logo />
