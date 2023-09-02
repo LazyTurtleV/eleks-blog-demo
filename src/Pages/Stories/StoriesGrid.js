@@ -30,11 +30,7 @@ function StoryItem({
 }) {
   return (
     <section>
-      <header>
-        <img src={picture} alt={'author_image'} />
-        <p className={'name'}>{name}</p>
-        <p className={'date'}>{date}</p>
-      </header>
+      <StoryHeader name={name} date={date} picture={picture} />
       <div className={'articleBody'}>
         <img src={img} alt={'story_image'} />
         <article>
@@ -42,13 +38,29 @@ function StoryItem({
           <p>{text}</p>
         </article>
       </div>
-      <footer>
-        <button className={'readMoreBtn'}>Read more</button>
-        <div className={'likeButton'}>
-          <img className={'likeIcon'} src={likeIcon} />
-          <p>{likes} likes</p>
-        </div>
-      </footer>
+      <StoryFooter likes={likes} />
     </section>
+  );
+}
+
+function StoryHeader({ picture, name, date }) {
+  return (
+    <header>
+      <img src={picture} alt={'author_image'} />
+      <p className={'name'}>{name}</p>
+      <p className={'date'}>{date}</p>
+    </header>
+  );
+}
+
+function StoryFooter({ likes }) {
+  return (
+    <footer>
+      <button className={'readMoreBtn'}>Read more</button>
+      <div className={'likeButton'}>
+        <img className={'likeIcon'} src={likeIcon} />
+        <p>{likes} likes</p>
+      </div>
+    </footer>
   );
 }
