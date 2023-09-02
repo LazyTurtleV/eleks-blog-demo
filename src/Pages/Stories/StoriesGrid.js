@@ -35,9 +35,13 @@ function StoryItem({
         <p className={'name'}>{name}</p>
         <p className={'date'}>{date}</p>
       </header>
-      <img src={img} alt={'story_image'} />
-      <h1>{header}</h1>
-      <p>{text}</p>
+      <div className={'articleBody'}>
+        <img src={img} alt={'story_image'} />
+        <article>
+          <h1>{header}</h1>
+          <p>{text}</p>
+        </article>
+      </div>
       <footer>
         <button className={'readMoreBtn'}>Read more</button>
         <div className={'likeButton'}>

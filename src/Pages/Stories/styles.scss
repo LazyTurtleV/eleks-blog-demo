@@ -7,11 +7,21 @@ main {
     .stories-grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 16px;
-        flex: 1;
+
         margin-top: 18px;
         margin-left: 28px;
         margin-right: 28px;
+        margin-bottom: 18px;
+
+
+        @media (width <= 700px) {
+            grid-template-columns: 1fr;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        gap: 16px;
+        flex: 1;
 
         section {
             padding: 20px;
@@ -42,15 +52,32 @@ main {
                     color: #5F6871;
                 }
             }
+
+            .articleBody {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                @media (width <= 700px) {
+                    flex-direction: row-reverse;
+                }
+
+                img {
+                    width: 100%;
+                    @media (width <= 700px) {
+                        height: 62px;
+                        width: 62px;
+                        object-fit: cover;
+                        margin-left: 24px;
+                    }
+                }
+                p {
+                    font-size: 14px;
+                    text-overflow: ellipsis;
+                    flex-shrink: 1;
+                }
+            }
             
-            img {
-                width: 100%;
-            }
-
-            p {
-                font-size: 14px;
-
-            }
 
             footer {
                 display: flex;
