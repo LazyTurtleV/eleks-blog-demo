@@ -124,6 +124,10 @@ main {
         padding: 28px;
         box-shadow: 5px 5px 5px rgba(0, 0, 0 , 0.05);
 
+        @media (width <= 700px) {
+            justify-content: space-between;
+        }
+
         h1 {
             margin: 0;
             font-family: Helvetica;
