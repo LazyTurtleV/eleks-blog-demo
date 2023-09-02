@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import styles from './styles.module.scss';
+
 import likeIcon from '../../../assets/like.svg';
 import DataLayer from '../../Services/DataLayer';
 
@@ -11,7 +13,7 @@ export default function StoriesGrid() {
   }, []);
 
   return (
-    <div className={'stories-grid'}>
+    <div className={styles['stories-grid']}>
       {stories.map((story, i) => (
         //the order will never change so index as a key is ok, I guess
         <StoryItem key={i} {...story} />
@@ -29,13 +31,13 @@ function StoryItem({
   likes,
 }) {
   return (
-    <section>
+    <section className={styles.section}>
       <StoryHeader name={name} date={date} picture={picture} />
-      <div className={'articleBody'}>
-        <img src={img} alt={'story_image'} />
+      <div className={styles.articleBody}>
+        <img className={styles.img} src={img} alt={'story_image'} />
         <article>
           <h1>{header}</h1>
-          <p>{text}</p>
+          <p className={styles.p}>{text}</p>
         </article>
       </div>
       <StoryFooter likes={likes} />
@@ -47,8 +49,8 @@ function StoryHeader({ picture, name, date }) {
   return (
     <header>
       <img src={picture} alt={'author_image'} />
-      <p className={'name'}>{name}</p>
-      <p className={'date'}>{date}</p>
+      <p className={styles.name}>{name}</p>
+      <p className={styles.date}>{date}</p>
     </header>
   );
 }
@@ -56,9 +58,9 @@ function StoryHeader({ picture, name, date }) {
 function StoryFooter({ likes }) {
   return (
     <footer>
-      <button className={'readMoreBtn'}>Read more</button>
-      <div className={'likeButton'}>
-        <img className={'likeIcon'} src={likeIcon} />
+      <button className={styles.readMoreBtn}>Read more</button>
+      <div className={styles.likeButton}>
+        <img className={styles.likeIcon} src={likeIcon} />
         <p>{likes} likes</p>
       </div>
     </footer>
