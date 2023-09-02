@@ -14,19 +14,28 @@ export default function Header() {
   const navigate = useNavigate();
   const { breakpoint } = useBreakpoints(screenConfig);
   return (
-    <header className={styles.container}>
-      <Logo />
-      {['large', 'medium'].includes(breakpoint) ? (
-        <SearchBar />
-      ) : (
-        <SearchIcon />
+    <main className={styles.main}>
+      <header className={styles.container}>
+        <Logo />
+        {['large', 'medium'].includes(breakpoint) ? (
+          <SearchBar />
+        ) : (
+          <SearchIcon />
+        )}
+        <img
+          className={styles['user-avatar']}
+          src={image}
+          alt={'Avatar'}
+          onClick={() => navigate('/profile')}
+        />
+      </header>
+      {breakpoint === 'small' && (
+        <input
+          className={styles['mobile-search-bar']}
+          type={'text'}
+          placeholder={'Search Eleks Blog'}
+        />
       )}
-      <img
-        className={styles['user-avatar']}
-        src={image}
-        alt={'Avatar'}
-        onClick={() => navigate('/profile')}
-      />
-    </header>
+    </main>
   );
 }
