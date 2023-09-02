@@ -7,7 +7,7 @@ export default function SearchBar() {
   return (
     <div
       className={'search-bar'}
-      style={isFocused ? { border: '1px solid white' } : undefined}
+      style={isFocused ? { border: '2px solid white' } : undefined}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
     >
