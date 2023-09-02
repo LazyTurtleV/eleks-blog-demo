@@ -2,6 +2,7 @@ main {
     background-color: #FAFAFB;
     display: flex;
     flex: 1;
+    flex-direction: column;
     align-self: stretch;
 
     .stories-grid {
@@ -114,4 +115,33 @@ main {
         }
     }
 
+    .stories-grid-header {
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+        align-items: center;
+        gap: 16px;
+        padding: 28px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0 , 0.05);
+
+        h1 {
+            margin: 0;
+            font-family: Helvetica;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .add-story-btn {
+            border: none;
+            padding: 16px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            border-radius: 4px;
+            background-color: #3884F2;
+            color: white;
+            font-family: Helvetica;
+            font-weight: 700;
+            font-size: 14px;
+        }
+    }
 }
