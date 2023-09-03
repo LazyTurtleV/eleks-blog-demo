@@ -10,9 +10,17 @@ import useBreakpoints from '../useBreakpoints';
 import SearchIcon from './SearchIcon';
 import screenConfig from '../Constants/screenConfig';
 
-export default function Header() {
+export default function Header({
+  isMobileSearchActive,
+  setIsMobileSearchActive,
+  searchToken,
+  setSearchToken,
+}) {
   const navigate = useNavigate();
   const { breakpoint } = useBreakpoints(screenConfig);
+
+  const onSearchTokenChange = (e) => setSearchToken(e.target.value);
+
   return (
     <main className={styles.main}>
       <header className={styles.container}>
@@ -20,7 +28,10 @@ export default function Header() {
         {['large', 'medium'].includes(breakpoint) ? (
           <SearchBar />
         ) : (
-          <SearchIcon />
+          <SearchIcon
+            isMobileSearchActive={isMobileSearchActive}
+            setIsMobileSearchActive={setIsMobileSearchActive}
+          />
         )}
         <img
           className={styles['user-avatar']}
@@ -29,9 +40,11 @@ export default function Header() {
           onClick={() => navigate('/profile')}
         />
       </header>
-      {breakpoint === 'small' && (
+      {breakpoint === 'small' && isMobileSearchActive && (
         <input
           className={styles['mobile-search-bar']}
+          value={searchToken}
+          onChange={onSearchTokenChange}
           type={'text'}
           placeholder={'Search Eleks Blog'}
         />
