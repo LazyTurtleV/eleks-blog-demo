@@ -16,7 +16,7 @@ export default function Stories() {
   const shouldStoriesHeaderRender =
     breakpoint !== 'small' && !isMobileSearchActive;
   return (
-    <>
+    <div className={styles['page-wrapper']}>
       <Header
         isMobileSearchActive={isMobileSearchActive}
         setIsMobileSearchActive={setIsMobileSearchActive}
@@ -27,6 +27,6 @@ export default function Stories() {
         {shouldStoriesHeaderRender && <StoriesGridHeader />}
         <StoriesGrid />
       </main>
-    </>
+    </div>
   );
 }
