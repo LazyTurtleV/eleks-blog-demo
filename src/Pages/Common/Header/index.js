@@ -26,7 +26,7 @@ export default function Header({
       <header className={styles.container}>
         <Logo />
         {['large', 'medium'].includes(breakpoint) ? (
-          <SearchBar />
+          <SearchBar value={searchToken} onChange={onSearchTokenChange} />
         ) : (
           <SearchIcon
             isMobileSearchActive={isMobileSearchActive}

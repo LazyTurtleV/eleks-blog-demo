@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 
 import Header from '../Common/Header';
 import StoriesGrid from './StoriesGrid';
@@ -15,6 +15,7 @@ export default function Stories() {
 
   const shouldStoriesHeaderRender =
     breakpoint !== 'small' ? true : !isMobileSearchActive;
+  console.log(searchToken);
   return (
     <div className={styles['page-wrapper']}>
       <Header
