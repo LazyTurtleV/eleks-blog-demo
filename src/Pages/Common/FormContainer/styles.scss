@@ -47,7 +47,7 @@
             }
         }
 
-        @media (min-width: 500px) {
+        @media (width <= 500px) {
             width: 418px;
             border-radius: 10px;
             border: 1px solid #DFE2E4;
