@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import likeIcon from '../../../assets/like.svg';
 import DataLayer from '../../Services/DataLayer';
 
-export default function StoriesGrid() {
+export default function StoriesGrid({ searchToken }) {
   const [stories, setStories] = useState([]);
 
   useEffect(() => {
@@ -14,10 +14,12 @@ export default function StoriesGrid() {
 
   return (
     <div className={styles['stories-grid']}>
-      {stories.map((story, i) => (
-        //the order will never change so index as a key is ok, I guess
-        <StoryItem key={i} {...story} />
-      ))}
+      {stories
+        .filter((s) => s.header.includes(searchToken))
+        .map((story, i) => (
+          //the order will never change so index as a key is ok, I guess
+          <StoryItem key={i} {...story} />
+        ))}
     </div>
   );
 }

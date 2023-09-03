@@ -15,7 +15,6 @@ export default function Stories() {
 
   const shouldStoriesHeaderRender =
     breakpoint !== 'small' ? true : !isMobileSearchActive;
-  console.log(searchToken);
   return (
     <div className={styles['page-wrapper']}>
       <Header
@@ -26,7 +25,7 @@ export default function Stories() {
       />
       <main className={styles.main}>
         {shouldStoriesHeaderRender && <StoriesGridHeader />}
-        <StoriesGrid />
+        <StoriesGrid searchToken={searchToken} />
       </main>
     </div>
   );
