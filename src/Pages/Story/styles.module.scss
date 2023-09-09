@@ -1,6 +1,8 @@
 .container {
     height: 100vh;
     .storyHeader {
+        padding: 26px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
         .backButton {
             align-items: center;
             display: flex;
