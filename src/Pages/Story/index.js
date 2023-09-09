@@ -25,7 +25,7 @@ export default function Story() {
       <AppHeader />
       <Header likesNumber={story?.likes} />
       <div className={styles.wrapper}>
-        {breakpoint !== 'small' && <LikeButton likesNumber={story?.likes} />}
+        {breakpoint === 'large' && <LikeButton likesNumber={story?.likes} />}
         <main className={styles.wrapper?.main}>
           <h1 className={styles.main?.h1}>Hello there</h1>
         </main>
@@ -46,7 +46,7 @@ function Header({ likesNumber }) {
         <img className={styles.backButton.img} src={arrowLeft} alt={'Back'} />
         <h1 className={styles.backButton.h1}>All stories</h1>
       </button>
-      {breakpoint === 'small' && (
+      {['small', 'medium'].includes(breakpoint) && (
         <LikeButton likesNumber={likesNumber} mobile />
       )}
     </header>
