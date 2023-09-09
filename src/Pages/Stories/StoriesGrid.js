@@ -15,7 +15,9 @@ export default function StoriesGrid({ searchToken }) {
   return (
     <div className={styles['stories-grid']}>
       {stories
-        .filter((s) => s.header.includes(searchToken))
+        .filter((s) =>
+          s.header.toLowerCase().includes(searchToken.toLowerCase())
+        )
         .map((story, i) => (
           //the order will never change so index as a key is ok, I guess
           <StoryItem key={i} {...story} />
