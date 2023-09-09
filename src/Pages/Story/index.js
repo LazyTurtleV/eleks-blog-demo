@@ -14,6 +14,7 @@ import useBreakpoints from '../Common/useBreakpoints';
 export default function Story() {
   const [story, setStory] = useState();
   const { storyId } = useParams();
+  const { breakpoint } = useBreakpoints();
 
   useEffect(() => {
     DataLayer.getArticle(storyId).then((d) => setStory(d));
@@ -23,6 +24,12 @@ export default function Story() {
     <div className={styles.container}>
       <AppHeader />
       <Header likesNumber={story?.likes} />
+      <div className={styles.wrapper}>
+        {breakpoint !== 'small' && <LikeButton likesNumber={story?.likes} />}
+        <main className={styles.wrapper?.main}>
+          <h1 className={styles.main?.h1}>Hello there</h1>
+        </main>
+      </div>
     </div>
   );
 }
@@ -64,12 +71,12 @@ function LikeButton({ likesNumber = 0, mobile }) {
   };
 
   return (
-    <div
+    <aside
       className={styles.likeBtn}
       style={!mobile ? { flexDirection: 'column', gap: '10px' } : undefined}
     >
       <img src={isChecked ? checkedLikeBtn : likeBtn} onClick={onClick} />
       <p>{likes} likes</p>
-    </div>
+    </aside>
   );
 }

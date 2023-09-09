@@ -80,8 +80,18 @@
     .wrapper {
         display: flex;
         justify-content: center;
+        margin-top: 27px;
+
         main {
-            justify-self: flex-start;
+            h1 {
+                margin: 0;
+            }
+        }
+
+        .likeBtn {
+            @extend .likeBtn;
+            position: absolute;
+            left: calc(25%);
         }
     }
 }
