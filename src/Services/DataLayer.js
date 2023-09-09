@@ -198,13 +198,15 @@ class ApiMock {
     likes: 47_000,
   };
 
+  async _getObjUrl(fetchResult) {
+    return fetchResult.blob().then((d) => URL.createObjectURL(d));
+  }
+
   async init() {
     this.#dataSample = await Promise.all(
       this.#dataSample.map(async (i) => {
         const img = i.img
-          ? await fetch(i.img)
-              .then((r) => r.blob())
-              .then((d) => URL.createObjectURL(d))
+          ? await fetch(i.img).then((d) => this._getObjUrl(d))
           : 'https://eleks-demo-app-assets.s3.amazonaws.com/placeholder.jpg';
         return {
           ...i,
@@ -223,10 +225,12 @@ class ApiMock {
   }
 
   async getArticle(id) {
-    this.#articleSample.img = await fetch(this.#articleSample.img);
+    this.#articleSample.img = await fetch(this.#articleSample.img).then((d) =>
+      this._getObjUrl(d)
+    );
     this.#articleSample.author.picture = await fetch(
       this.#articleSample.author.picture
-    );
+    ).then((d) => this._getObjUrl(d));
     return this.#articleSample;
   }
 }
