@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useReducer } from 'react';
 
+import screenConfig from './Constants/screenConfig';
+
 const BREAKPOINT_ACTION_TYPES = {
   SMALL: 'small',
   MEDIUM: 'medium',
@@ -10,7 +12,10 @@ function reducer(state, action) {
   return action.payload ? action.type : state;
 }
 
-export default function useBreakpoints({ lowerBound, upperBound }) {
+export default function useBreakpoints({
+  lowerBound,
+  upperBound,
+} = screenConfig) {
   const [breakpoint, dispatch] = useReducer(reducer);
 
   const handleLarge = useCallback(
