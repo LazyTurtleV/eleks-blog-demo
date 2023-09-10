@@ -20,9 +20,10 @@ export default function Header({ likesNumber }) {
         <img className={styles.backButton.img} src={arrowLeft} alt={'Back'} />
         <h1 className={styles.backButton.h1}>All stories</h1>
       </button>
-      {['small', 'medium'].includes(breakpoint) && (
-        <LikeButton likesNumber={likesNumber} mobile />
-      )}
+      {['small', 'medium'].includes(breakpoint) &&
+        likesNumber !== undefined && (
+          <LikeButton likesNumber={likesNumber} mobile />
+        )}
     </header>
   );
 }
