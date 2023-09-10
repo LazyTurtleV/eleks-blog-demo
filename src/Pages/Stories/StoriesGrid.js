@@ -35,17 +35,17 @@ function StoryItem({
   likes,
 }) {
   return (
-    <section className={styles.section}>
+    <article className={styles.article}>
       <StoryHeader name={name} date={date} picture={picture} />
-      <div className={styles.articleBody}>
+      <section className={styles.articleBody}>
         <img className={styles.img} src={img} alt={'story_image'} />
-        <article>
+        <div>
           <h1>{header}</h1>
-          <p className={styles.p}>{text}</p>
-        </article>
-      </div>
+          <p article={styles.p}>{text}</p>
+        </div>
+      </section>
       <StoryFooter likes={likes} />
-    </section>
+    </article>
   );
 }
 
