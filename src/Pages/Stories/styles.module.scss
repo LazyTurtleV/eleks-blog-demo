@@ -1,6 +1,9 @@
 @import '../Common/common.scss';
 
 .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
     background-color: #FAFAFB;
     .main {
         display: flex;
