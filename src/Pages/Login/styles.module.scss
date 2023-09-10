@@ -1,3 +1,5 @@
+@import "../Common/common.scss";
+
 .login-form {
     display: flex;
     flex-direction: column;
@@ -30,6 +32,8 @@
         }
     }
     input[type="submit"] {
+        @extend .hover-animation;
+
         cursor: pointer;
         font-size: 16px;
         margin-top: 10px;
@@ -39,12 +43,10 @@
         border-radius: 4px;
         padding: 12px;
     }
-    input[type="submit"]:hover {
-        opacity: 0.8;
-        transition: 120ms ease-in-out;
-    }
 
     input[type="button"] {
+        @extend .hover-animation;
+
         cursor: pointer;
         margin-top: 48px;
         background-color: transparent;
@@ -53,9 +55,5 @@
         color: #3884F2;
         text-decoration: underline;
         border: none;
-    }
-    input[type="button"]:hover {
-        opacity: 0.8;
-        transition: 120ms ease-in-out;
     }
 }
