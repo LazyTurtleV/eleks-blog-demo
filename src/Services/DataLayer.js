@@ -1,6 +1,7 @@
 class ApiMock {
   #dataSample = [
     {
+      id: 'ed123fc4-baae-4b02-bc92-574022c1a8b1',
       author: {
         name: 'Immam Farrhouk',
         picture: 'https://picsum.photos/seed/268/42',
@@ -14,6 +15,7 @@ class ApiMock {
       likes: 47_000,
     },
     {
+      id: 'c1a5fbc4-4d90-4a57-83ad-e3e5b7405fc8',
       author: {
         name: 'Andy Gardner',
         picture: 'https://picsum.photos/seed/269/42',
@@ -29,6 +31,7 @@ class ApiMock {
       likes: 47_000,
     },
     {
+      id: 'e375acf5-2567-47d4-bf4d-26a6f0c64ef2',
       author: {
         name: 'Allan Hamilton',
         picture: 'https://picsum.photos/seed/270/42',
@@ -43,6 +46,7 @@ class ApiMock {
       likes: 47_000,
     },
     {
+      id: '53c4d2c6-05cc-4468-b252-a4a81c1d29ef',
       author: {
         name: 'Allan Hamilton',
         picture: 'https://picsum.photos/seed/271/42',
@@ -56,6 +60,7 @@ class ApiMock {
       likes: 47_000,
     },
     {
+      id: '0e672fc6-d701-4153-98fb-1ac21bd24065',
       author: {
         name: 'Andy Gardner',
         picture: 'https://picsum.photos/seed/272/42',
@@ -71,6 +76,7 @@ class ApiMock {
       likes: 47_000,
     },
     {
+      id: '0aa02388-3021-4af7-95d1-96827dfa8391',
       author: {
         name: 'Allan Hamilton',
         picture: 'https://picsum.photos/seed/273/42',
@@ -85,6 +91,7 @@ class ApiMock {
       likes: 47_000,
     },
     {
+      id: '9317878e-382a-44e2-9d3c-f94461367af3',
       author: {
         name: 'Immam Farrhouk',
         picture: 'https://picsum.photos/seed/274/42',
@@ -98,6 +105,7 @@ class ApiMock {
       likes: 47_000,
     },
     {
+      id: '33d30a41-55d1-4f0b-bb64-1d1f572aa038',
       author: {
         name: 'Andy Gardner',
         picture: 'https://picsum.photos/seed/274/42',
@@ -113,6 +121,7 @@ class ApiMock {
       likes: 47_000,
     },
     {
+      id: '31e0d404-4a17-444e-9af2-4c676695f09d',
       author: {
         name: 'Immam Farrhouk',
         picture: 'https://picsum.photos/seed/275/42',
@@ -127,6 +136,7 @@ class ApiMock {
       likes: 47_000,
     },
     {
+      id: 'b442d5f3-dd6b-4e73-97a5-b906587e05a4',
       author: {
         name: 'Immam Farrhouk',
         picture: 'https://picsum.photos/seed/276/42',
@@ -141,6 +151,7 @@ class ApiMock {
       likes: 47_000,
     },
     {
+      id: 'd90e1c25-48fd-4d49-8c16-5ae7f62ca554',
       author: {
         name: 'Immam Farrhouk',
         picture: 'https://picsum.photos/seed/277/42',
@@ -154,6 +165,7 @@ class ApiMock {
       likes: 47_000,
     },
     {
+      id: 'b2ef4837-908f-4f8b-88c3-e56c741d188a',
       author: {
         name: 'Immam Farrhouk',
         picture: 'https://picsum.photos/seed/278/42',
@@ -170,6 +182,7 @@ class ApiMock {
   ];
 
   #articleSample = {
+    id: '',
     author: {
       name: 'Andy Gardner',
       picture: 'https://picsum.photos/seed/269/42',
