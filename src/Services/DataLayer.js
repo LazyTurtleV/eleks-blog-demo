@@ -215,10 +215,6 @@ class ApiMock {
         };
       })
     );
-    this.#articleSample.img = await fetch(this.#articleSample.img);
-    this.#articleSample.author.picture = await fetch(
-      this.#articleSample.author.picture
-    );
   }
 
   async getArticles() {
@@ -226,13 +222,14 @@ class ApiMock {
   }
 
   async getArticle(id) {
-    this.#articleSample.img = await fetch(this.#articleSample.img).then((d) =>
+    const article = JSON.parse(JSON.stringify(this.#articleSample));
+    article.img = await fetch(this.#articleSample.img).then((d) =>
       this._getObjUrl(d)
     );
-    this.#articleSample.author.picture = await fetch(
+    article.author.picture = await fetch(
       this.#articleSample.author.picture
     ).then((d) => this._getObjUrl(d));
-    return this.#articleSample;
+    return article;
   }
 }
 
