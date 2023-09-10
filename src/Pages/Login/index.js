@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
 
-import './styles.scss';
+import styles from './styles.module.scss';
 
 import FormContainer from '../Common/FormContainer';
 import { useAuthContext } from '../../Contexts/AuthContext';
@@ -63,7 +63,7 @@ export default function Login() {
 
   return (
     <FormContainer>
-      <form className={'login-form'} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles['login-form']} onSubmit={handleSubmit(onSubmit)}>
         <h1>Log in</h1>
         <InlineInput
           label={'Email'}
@@ -91,7 +91,7 @@ export default function Login() {
 
 function InlineInput({ label, type, name, placeholder, onChange, errors }) {
   return (
-    <span className={'inline-controll'}>
+    <span className={styles['inline-controll']}>
       <label htmlFor={name}>{label}</label>
       <FormField
         name={name}
@@ -106,7 +106,7 @@ function InlineInput({ label, type, name, placeholder, onChange, errors }) {
 
 function CheckboxControl({ onChange }) {
   return (
-    <span className={'checkbox-controll'}>
+    <span className={styles['checkbox-controll']}>
       <Checkbox />
       <label>Remember me</label>
     </span>
