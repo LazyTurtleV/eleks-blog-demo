@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 
 import likeIcon from '../../../assets/like.svg';
 import DataLayer from '../../Services/DataLayer';
+import { useNavigate } from 'react-router-dom';
 
 export default function StoriesGrid({ searchToken }) {
   const [stories, setStories] = useState([]);
@@ -27,6 +28,7 @@ export default function StoriesGrid({ searchToken }) {
 }
 
 function StoryItem({
+  id,
   img,
   header,
   text,
@@ -35,17 +37,17 @@ function StoryItem({
   likes,
 }) {
   return (
-    <section className={styles.section}>
+    <article className={styles.article}>
       <StoryHeader name={name} date={date} picture={picture} />
-      <div className={styles.articleBody}>
+      <section className={styles.articleBody}>
         <img className={styles.img} src={img} alt={'story_image'} />
-        <article>
+        <div>
           <h1>{header}</h1>
-          <p className={styles.p}>{text}</p>
-        </article>
-      </div>
-      <StoryFooter likes={likes} />
-    </section>
+          <p article={styles.p}>{text}</p>
+        </div>
+      </section>
+      <StoryFooter likes={likes} id={id} />
+    </article>
   );
 }
 
@@ -59,10 +61,16 @@ function StoryHeader({ picture, name, date }) {
   );
 }
 
-function StoryFooter({ likes }) {
+function StoryFooter({ likes, id }) {
+  const navigate = useNavigate();
   return (
     <footer>
-      <button className={styles.readMoreBtn}>Read more</button>
+      <button
+        className={styles.readMoreBtn}
+        onClick={() => navigate(encodeURI(id))}
+      >
+        Read more
+      </button>
       <div className={styles.likeButton}>
         <img className={styles.likeIcon} src={likeIcon} />
         <p>{likes} likes</p>

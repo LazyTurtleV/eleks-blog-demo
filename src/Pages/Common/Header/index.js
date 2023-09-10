@@ -11,10 +11,10 @@ import SearchIcon from './SearchIcon';
 import screenConfig from '../Constants/screenConfig';
 
 export default function Header({
-  isMobileSearchActive,
-  setIsMobileSearchActive,
-  searchToken,
-  setSearchToken,
+  isMobileSearchActive = false,
+  setIsMobileSearchActive = () => {},
+  searchToken = '',
+  setSearchToken = () => {},
 }) {
   const navigate = useNavigate();
   const { breakpoint } = useBreakpoints(screenConfig);

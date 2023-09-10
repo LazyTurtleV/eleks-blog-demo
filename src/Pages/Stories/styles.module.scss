@@ -1,3 +1,5 @@
+@import '../Common/common.scss';
+
 .page-wrapper {
     background-color: #FAFAFB;
     .main {
@@ -30,7 +32,7 @@
             gap: 16px;
             flex: 1;
     
-            section {
+            article {
                 padding: 20px;
                 padding-bottom: 24px;
                 display: flex;
@@ -92,7 +94,10 @@
                     justify-content: space-between;
     
                     .readMoreBtn {
+                        @extend .hover-animation;
+
                         background-color: white;
+                        cursor: pointer;
                         border: none;
                         padding: 0;
                         font-weight: 700;
@@ -142,6 +147,9 @@
             }
     
             .add-story-btn {
+                @extend .hover-animation;
+
+                cursor: pointer;
                 border: none;
                 padding: 16px;
                 padding-top: 12px;
