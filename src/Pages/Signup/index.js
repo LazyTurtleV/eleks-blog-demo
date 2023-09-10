@@ -1,7 +1,7 @@
 import React, { useCallback, useReducer } from 'react';
 import { useNavigate } from 'react-router';
 
-import './styles.scss';
+import styles from '../Login/styles.module.scss';
 
 import FormContainer from '../Common/FormContainer';
 import FormField from '../Common/FormField';
@@ -64,7 +64,7 @@ export default function Signup() {
 
   return (
     <FormContainer>
-      <form className={'login-form'} onSubmit={handleSubmit(submit)}>
+      <form className={styles['login-form']} onSubmit={handleSubmit(submit)}>
         <h1>Create an account</h1>
         <InlineInput
           label={'Name'}
@@ -111,7 +111,7 @@ export default function Signup() {
 
 function InlineInput({ label, type, name, placeholder, onChange, errors }) {
   return (
-    <span className={'inline-controll'}>
+    <span className={styles['inline-controll']}>
       <label htmlFor={name}>{label}</label>
       <FormField
         name={name}
