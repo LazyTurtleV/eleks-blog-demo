@@ -41,6 +41,7 @@ function Article({ story = {} }) {
         />
         <h1 className={styles.header?.h1}>{story.header}</h1>
         <Details {...story} />
+        <p className={styles.header?.p}>{story.text}</p>
       </header>
     </main>
   );
