@@ -26,11 +26,23 @@ export default function Story() {
       <Header likesNumber={story?.likes} />
       <div className={styles.wrapper}>
         {breakpoint === 'large' && <LikeButton likesNumber={story?.likes} />}
-        <main className={styles.wrapper?.main}>
-          <h1 className={styles.main?.h1}>Hello there</h1>
-        </main>
+        <Article story={story} />
       </div>
     </div>
+  );
+}
+
+function Article({ story }) {
+  return (
+    <main className={styles.wrapper?.main}>
+      <header className={styles.main?.header}>
+        <img
+          className={styles.header?.img}
+          src={story?.img}
+          alt={'story_image'}
+        />
+      </header>
+    </main>
   );
 }
 

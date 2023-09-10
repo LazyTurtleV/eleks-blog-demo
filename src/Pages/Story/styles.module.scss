@@ -78,20 +78,32 @@
     }
 
     .wrapper {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
         justify-content: center;
         margin-top: 27px;
+        gap: 60px;
+
+        @media (width <= 900px) {
+            margin-top: 0;
+            grid-template-columns: 1fr;
+        }
 
         main {
-            h1 {
-                margin: 0;
+            display: flex;
+            flex-shrink: 1;
+            header {
+                display: flex;
+                flex-shrink: 1;
+                img {
+                    max-width: 100%;
+                }
             }
         }
 
         .likeBtn {
             @extend .likeBtn;
-            position: absolute;
-            left: calc(25%);
+            justify-self: flex-end;
         }
     }
 }
