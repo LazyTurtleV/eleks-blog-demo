@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import AppHeader from '../Common/Header';
@@ -8,24 +8,38 @@ import useBreakpoints from '../Common/useBreakpoints';
 import Header, { LikeButton } from './Header';
 
 import styles from './styles.module.scss';
+import LoaderHOC from '../Common/LoaderHOC';
 
 export default function Story() {
   const [story, setStory] = useState();
+  const [loading, setLoading] = useState(true);
   const { storyId } = useParams();
   const { breakpoint } = useBreakpoints();
 
   useEffect(() => {
-    DataLayer.getArticle(storyId).then((d) => setStory(d));
+    DataLayer.getArticle(storyId).then((d) => {
+      setStory(d);
+      setLoading(false);
+    });
   }, [storyId]);
+
+  const ArticleContent = useMemo(
+    () =>
+      LoaderHOC(
+        <article className={styles.wrapper}>
+          {breakpoint === 'large' && <LikeButton likesNumber={story?.likes} />}
+          <Article story={story} />
+        </article>,
+        loading
+      ),
+    [story, loading, breakpoint]
+  );
 
   return (
     <div className={styles.container}>
       <AppHeader />
       <Header likesNumber={story?.likes} />
-      <article className={styles.wrapper}>
-        {breakpoint === 'large' && <LikeButton likesNumber={story?.likes} />}
-        <Article story={story} />
-      </article>
+      <ArticleContent />
     </div>
   );
 }

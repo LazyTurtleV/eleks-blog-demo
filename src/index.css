@@ -6,3 +6,7 @@ html, body {
 * {
     font-family: Rubik;
 }
+
+#root {
+    height: 100vh;
+}

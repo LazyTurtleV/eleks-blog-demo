@@ -1,30 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import styles from './styles.module.scss';
 
 import likeIcon from '../../../assets/like.svg';
 import DataLayer from '../../Services/DataLayer';
 import { useNavigate } from 'react-router-dom';
+import LoaderHOC from '../Common/LoaderHOC';
 
 export default function StoriesGrid({ searchToken }) {
   const [stories, setStories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    DataLayer.getArticles().then((d) => setStories(d));
+    DataLayer.getArticles().then((d) => {
+      setStories(d);
+      setLoading(false);
+    });
   }, []);
 
-  return (
-    <div className={styles['stories-grid']}>
-      {stories
-        .filter((s) =>
-          s.header.toLowerCase().includes(searchToken.toLowerCase())
-        )
-        .map((story, i) => (
-          //the order will never change so index as a key is ok, I guess
-          <StoryItem key={i} {...story} />
-        ))}
-    </div>
+  const Content = useMemo(
+    () =>
+      LoaderHOC(
+        <div className={styles['stories-grid']}>
+          {stories
+            .filter((s) =>
+              s.header.toLowerCase().includes(searchToken.toLowerCase())
+            )
+            .map((story, i) => (
+              //the order will never change so index as a key is ok, I guess
+              <StoryItem key={i} {...story} />
+            ))}
+        </div>,
+        loading
+      ),
+    [loading, stories, searchToken]
   );
+
+  return <Content />;
 }
 
 function StoryItem({
