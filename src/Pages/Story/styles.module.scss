@@ -109,7 +109,10 @@
 
                 img {
                     max-width: 100%;
-                    border-radius: 6px;
+
+                    @media (width >= 900px) {
+                        border-radius: 6px;
+                    }
                 }
                 h1 {
                     @extend .margin-on-mobile;
