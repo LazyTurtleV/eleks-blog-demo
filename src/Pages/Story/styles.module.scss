@@ -6,8 +6,8 @@
     }
 }
 
-.margin-on-mobile {
-    @media (width <= 500px) {
+.margin-above-medium {
+    @media (width <= 900px) {
         padding-left: 20px;
         padding-right: 20px;
     }
@@ -115,7 +115,7 @@
                     }
                 }
                 h1 {
-                    @extend .margin-on-mobile;
+                    @extend .margin-above-medium;
 
                     font-size: 36px;
                     font-family: 'PT Serif';
@@ -124,7 +124,7 @@
                     margin: 0;
                 }
                 section {
-                    @extend .margin-on-mobile;
+                    @extend .margin-above-medium;
 
                     display: flex;
                     gap: 15px;
@@ -150,7 +150,7 @@
                     }
                 }
                 p {
-                    @extend .margin-on-mobile;
+                    @extend .margin-above-medium;
 
                     font-size: 21px;
                     white-space: pre-line;
