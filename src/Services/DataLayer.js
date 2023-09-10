@@ -177,23 +177,11 @@ class ApiMock {
     date: '2 July 2020',
     img: 'https://eleks-demo-app-assets.s3.amazonaws.com/tiktok.png',
     header: 'How TikTok Is Rewriting the World',
-    text: `In User Experience design, it’s easy to think of ‘users’ 
-    as a faceless group of humans. To combat that we use ‘personas’ 
-    as a shorthand to represent users, giving them a name (like Joan), 
-    a face, desires and dislikes. We make a ‘happy path’, a series of 
-    actions that solve Joan’s problem and hope that our users will 
-    know how to find the happy path.
-
-    The thing is that users in user testing don’t behave how they 
-    would in the real world. They don’t even behave how they say they 
-    will. It isn’t even their fault; being observed, being questioned 
-    and being rewarded, alter their behaviour without their awareness.
-    
-    The UK Royal Mail used to employ cats, with an actual salary for 
-    their upkeep (and no, they weren’t like those cats with jobs in Japan 
-    that actually have miniature uniforms because goodness knows how 
-    they get those tiny hats on them). Tibs was such a well-loved 
-    working cat, he got his own obituary:
+    text: `In User Experience design, it’s easy to think of ‘users’ as a faceless group of humans. To combat that we use ‘personas’ as a shorthand to represent users, giving them a name (like Joan), a face, desires and dislikes. We make a ‘happy path’, a series of actions that solve Joan’s problem and hope that our users will know how to find the happy path.
+    \n
+    The thing is that users in user testing don’t behave how they would in the real world. They don’t even behave how they say they will. It isn’t even their fault; being observed, being questioned and being rewarded, alter their behaviour without their awareness.
+    \n
+    The UK Royal Mail used to employ cats, with an actual salary for their upkeep (and no, they weren’t like those cats with jobs in Japan that actually have miniature uniforms because goodness knows how they get those tiny hats on them). Tibs was such a well-loved working cat, he got his own obituary:
     `,
     likes: 47_000,
   };
