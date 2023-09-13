@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import useBreakpoints from '../Common/useBreakpoints';
 
 import likeBtn from '../../../assets/like-button.svg';
 import checkedLikeBtn from '../../../assets/like-button-checked.svg';
-import arrowLeft from './../../../assets/arrow-left.svg';
 
 import styles from './styles.module.scss';
+import Backbutton from '../Common/Backbutton';
 
 export default function Header({ likesNumber }) {
-  const navigate = useNavigate();
   const { breakpoint } = useBreakpoints();
   return (
     <header className={styles.storyHeader}>
-      <button
-        className={styles.backButton}
-        onClick={() => navigate('/stories')}
-      >
-        <img className={styles.backButton.img} src={arrowLeft} alt={'Back'} />
-        <h1 className={styles.backButton.h1}>All stories</h1>
-      </button>
+      <Backbutton />
       {['small', 'medium'].includes(breakpoint) &&
         likesNumber !== undefined && (
           <LikeButton likesNumber={likesNumber} mobile />
