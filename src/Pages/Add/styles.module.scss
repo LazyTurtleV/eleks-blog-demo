@@ -1,5 +1,8 @@
 .container {
     height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     header {
         padding: 26px;
@@ -28,5 +31,49 @@
                 transition: opacity 300ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
             }
         }
+    }
+
+    .article {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+        width: 640px;
+        gap: 16px;
+
+        .title {
+            border: none;
+            font-family: PT Serif;
+            font-weight: 700;
+            font-size: 44px;
+            padding: 10px;
+            border-radius: 4px;
+            align-self: stretch;
+
+            &:focus {
+                border: 1px solid #3884F2;
+                outline: none;
+            }
+            &::placeholder {
+                color: #BFC4CA;
+            }
+        }
+        .text {
+            border: none;
+            resize: none;
+            font-family: PT Serif;
+            font-weight: 700;
+            font-size: 21px;
+            padding: 10px;
+            border-radius: 4px;
+
+            &:focus {
+                border: 1px solid #3884F2;
+                outline: none;
+            }
+            &::placeholder {
+                color: #BFC4CA;
+            }
+        } 
     }
 }
