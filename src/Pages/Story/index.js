@@ -37,7 +37,7 @@ export default function Story() {
 
   return (
     <div className={styles.container}>
-      <AppHeader />
+      <AppHeader hideSearchBar />
       <Header likesNumber={story?.likes} />
       <ArticleContent />
     </div>

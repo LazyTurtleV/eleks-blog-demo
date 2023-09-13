@@ -11,6 +11,7 @@ import SearchIcon from './SearchIcon';
 import screenConfig from '../Constants/screenConfig';
 
 export default function Header({
+  hideSearchBar = false,
   isMobileSearchActive = false,
   setIsMobileSearchActive = () => {},
   searchToken = '',
@@ -25,12 +26,12 @@ export default function Header({
     <main className={styles.main}>
       <header className={styles.container}>
         <Logo />
-        {['large', 'medium'].includes(breakpoint) ? (
-          <SearchBar value={searchToken} onChange={onSearchTokenChange} />
-        ) : (
-          <SearchIcon
+        {!hideSearchBar && (
+          <SearchControl
             isMobileSearchActive={isMobileSearchActive}
             setIsMobileSearchActive={setIsMobileSearchActive}
+            searchToken={searchToken}
+            onSearchTokenChange={onSearchTokenChange}
           />
         )}
         <img
@@ -50,5 +51,22 @@ export default function Header({
         />
       )}
     </main>
+  );
+}
+
+function SearchControl({
+  isMobileSearchActive,
+  setIsMobileSearchActive,
+  searchToken,
+  onSearchTokenChange,
+}) {
+  const { breakpoint } = useBreakpoints(screenConfig);
+  return ['large', 'medium'].includes(breakpoint) ? (
+    <SearchBar value={searchToken} onChange={onSearchTokenChange} />
+  ) : (
+    <SearchIcon
+      isMobileSearchActive={isMobileSearchActive}
+      setIsMobileSearchActive={setIsMobileSearchActive}
+    />
   );
 }
