@@ -23,3 +23,25 @@ export default function FormField({
     </div>
   );
 }
+
+export function InlineInput({
+  label,
+  type,
+  name,
+  placeholder,
+  onChange,
+  errors,
+}) {
+  return (
+    <span className={'inline-controll'}>
+      <label htmlFor={name}>{label}</label>
+      <FormField
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        errors={errors}
+        onChange={onChange}
+      />
+    </span>
+  );
+}
