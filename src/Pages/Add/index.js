@@ -4,6 +4,7 @@ import Header from './Header';
 
 import styles from './styles.module.scss';
 import useResizableTextarea from '../Common/useResizableTextarea';
+import ImageInput from './ImageInput';
 
 export default function Add() {
   const [text, setText] = useState('');
@@ -15,6 +16,7 @@ export default function Add() {
       <AppHeader hideSearchBar />
       <Header />
       <main className={styles.article}>
+        <ImageInput />
         <input
           className={styles.title}
           placeholder="Title"
