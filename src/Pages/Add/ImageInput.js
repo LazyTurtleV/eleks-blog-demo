@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react';
 
+import close from '../../../assets/close.svg';
+
 import styles from './styles.module.scss';
 
 export default function ImageInput() {
@@ -14,13 +16,22 @@ export default function ImageInput() {
         accept={'image/png, image/jpeg'}
         onChange={(e) => selectImage(URL.createObjectURL(e.target.files[0]))}
       />
-      <img
-        src={
-          selectedImage ||
-          'https://eleks-demo-app-assets.s3.amazonaws.com/placephoto.jpg'
-        }
-        onClick={() => ref.current.click()}
-      />
+      {selectedImage ? (
+        <div>
+          <img className={styles.imagePreview} src={selectedImage} />
+          <img
+            className={styles.closeIcon}
+            src={close}
+            onClick={() => selectImage(null)}
+          />
+        </div>
+      ) : (
+        <img
+          className={styles.inputImage}
+          src={'https://eleks-demo-app-assets.s3.amazonaws.com/placephoto.jpg'}
+          onClick={() => ref.current.click()}
+        />
+      )}
     </div>
   );
 }

@@ -51,12 +51,25 @@
                 opacity: 0;
             }
 
-            img {
+            .inputImage {
                 @extend .hover-animation;
 
                 width: 100%;
                 object-fit: cover;
                 cursor: pointer;
+            }
+
+            .imagePreview {
+                object-fit: cover;
+                width: 100%;
+            }
+
+            .closeIcon {
+                @extend .hover-animation;
+
+                height: 24px;
+                width: 24px;
+                position: absolute;
             }
         }
 
