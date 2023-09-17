@@ -13,6 +13,7 @@ import { AuthContext } from './Contexts/AuthContext';
 import Signup from './Pages/Signup';
 import Stories from './Pages/Stories';
 import Story from './Pages/Story';
+import Add from './Pages/Add';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: 'signup',
     element: <Signup />,
+  },
+  {
+    path: 'add',
+    element: <Add />,
   },
   {
     path: 'profile',
