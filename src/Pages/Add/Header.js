@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 export default function Header() {
   return (
-    <header className={styles.header}>
+    <header className={styles.articleHeader}>
       <Backbutton />
       <button className={styles.publishBtn}>Publish</button>
     </header>
