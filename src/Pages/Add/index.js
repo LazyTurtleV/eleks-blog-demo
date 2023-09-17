@@ -14,7 +14,7 @@ export default function Add() {
   return (
     <div className={styles.container}>
       <AppHeader hideSearchBar />
-      <Header />
+      <Header publishBtnDisabled={!text || !title} />
       <main className={styles.article}>
         <ImageInput />
         <input
