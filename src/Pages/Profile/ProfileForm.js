@@ -16,14 +16,16 @@ export default function ProfileForm() {
   console.log(formState);
 
   return (
-    <form className={styles.formStyle} onSubmit={handleSubmit}>
+    <div className={styles.container}>
       <h1>Edit your profile</h1>
-      <InlineInput type={'text'} name={'name'} label={'First name'} />
-      <InlineInput type={'text'} name={'surname'} label={'Last name'} />
-      <InlineInput type={'email'} name={'email'} label={'Email'} />
-      <AvatarSection />
-      <input type={'submit'} />
-    </form>
+      <form onSubmit={handleSubmit}>
+        <InlineInput type={'text'} name={'name'} label={'First name'} />
+        <InlineInput type={'text'} name={'surname'} label={'Last name'} />
+        <InlineInput type={'email'} name={'email'} label={'Email'} />
+        <AvatarSection />
+        <input type={'submit'} />
+      </form>
+    </div>
   );
 }
 
