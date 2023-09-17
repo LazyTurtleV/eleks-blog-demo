@@ -1,4 +1,8 @@
+@use 'sass:map';
+
+
 @import './../Common/common.scss';
+@import '../Common/palette.scss';
 
 .margin-above-medium {
     @media (width <= 900px) {
@@ -15,7 +19,7 @@
     p {
         padding: 0;
         margin: 0;
-        color: #5F6871;
+        color: map.get($palette, 'neutral', 700);
     }
 
     img {
@@ -71,7 +75,7 @@
                 width: 21px;
             }
             h1 {
-                color: #292C31;
+                color: map.get($palette, 'neutral', 900);
                 font-size: 20px;
                 margin: 0;
             }
@@ -114,7 +118,7 @@
                     font-size: 36px;
                     font-family: 'PT Serif';
                     font-weight: 700;
-                    color: #292C31;
+                    color: map.get($palette, 'neutral', 900);
                     margin: 0;
                 }
                 section {
@@ -139,7 +143,7 @@
                             font-style: normal
                         }
                         time {
-                            color: #5F6871;
+                            color: map.get($palette, 'neutral', 700);
                         }
                     }
                 }

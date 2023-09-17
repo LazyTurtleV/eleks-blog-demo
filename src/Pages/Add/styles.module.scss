@@ -1,4 +1,7 @@
+@use 'sass:map';
+
 @import '../Common/common.scss';
+@import '../Common/palette.scss';
 
 .container {
     height: 100vh;
@@ -18,7 +21,7 @@
             font-family: Helvetica;
             font-weight: 700;
             color: white;
-            background-color: #3884F2;
+            background-color: map.get($palette, 'primary', 400);
             padding-top: 12px;
             padding-bottom: 12px;
             padding-left: 33px;
@@ -99,7 +102,7 @@
             align-self: stretch;
 
             &:focus {
-                border: 1px solid #3884F2;
+                border: 1px solid map.get($palette, 'primary', 400);
                 outline: none;
             }
             &::placeholder {
@@ -117,7 +120,7 @@
             border-radius: 4px;
 
             &:focus {
-                border: 1px solid #3884F2;
+                border: 1px solid map.get($palette, 'primary', 400);
                 outline: none;
             }
             &::placeholder {

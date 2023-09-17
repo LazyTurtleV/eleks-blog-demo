@@ -1,8 +1,12 @@
+@use 'sass:map';
+
+@import '../../Common/palette.scss';
+
 .main {
     background-color: white;
     box-shadow: 5px 5px 5px rgba(133, 132, 132, 0.1);
     .container {
-        background-color: #052450;
+        background-color: map.get($palette, 'primary', 900);
         display: flex;
         height: 60px;
         align-self: stretch;
@@ -97,7 +101,7 @@
         }
         &:focus {
             outline: none;
-            border-bottom: 2px solid #3884F2;
+            border-bottom: 2px solid map.get($palette, 'primary', 400);
         }
     }
 }
