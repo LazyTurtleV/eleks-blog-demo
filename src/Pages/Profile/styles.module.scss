@@ -1,32 +1,48 @@
 .container {
-    h1 {
-        font-size: 24px;
-    }
-
-    form {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1 {
+            font-size: 24px;
+        }
     
-        .avatarSection {
-            img {
-                height: 65px;
-                width: 65px;
-                border-radius: 50%;
+        .profileMain {
+            display: flex;
+            width: 580px;
+            gap: 80px;
+    
+            .avatarSection {
+                img {
+                    height: 174px;
+                    width: 174px;
+                    border-radius: 50%;
+                    border: 1px solid #BFC4CA;
+                }
+            }
+            .profileForm {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                gap: 14px;
+            
+                input[type='submit'] {
+                    width: fit-content;
+                    margin-top: 20px;
+                    border: none;
+                    font-weight: 500;
+                    color: white;
+                    background-color: #3884F2;
+                    border-radius: 4px;
+                    padding-left: 40px;
+                    padding-right: 40px;
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                }
             }
         }
-        input[type='submit'] {
-            width: fit-content;
-            border: none;
-            font-weight: 500;
-            color: white;
-            background-color: #3884F2;
-            border-radius: 4px;
-            padding-left: 40px;
-            padding-right: 40px;
-            padding-top: 12px;
-            padding-bottom: 12px;
-        }
+    
     }
 }
+
 

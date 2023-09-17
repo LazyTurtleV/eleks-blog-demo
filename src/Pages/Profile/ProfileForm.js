@@ -16,17 +16,22 @@ export default function ProfileForm() {
   return (
     <div className={styles.container}>
       <h1>Edit your profile</h1>
-      <form onSubmit={handleSubmit}>
-        <InlineInput type={'text'} name={'name'} label={'First name'} />
-        <InlineInput type={'text'} name={'surname'} label={'Last name'} />
-        <InlineInput type={'email'} name={'email'} label={'Email'} />
+      <main className={styles.profileMain}>
+        <form className={styles.profileForm} onSubmit={handleSubmit}>
+          <InlineInput type={'text'} name={'name'} label={'First name'} />
+          <InlineInput type={'text'} name={'surname'} label={'Last name'} />
+          <InlineInput type={'email'} name={'email'} label={'Email'} />
+          <input type={'submit'} />
+        </form>
         <AvatarSection />
-        <input type={'submit'} />
-      </form>
+      </main>
     </div>
   );
 }
 
 function formValuesFromEvent(e) {
-  return [...e.target].reduce((acc, i) => ({ ...acc, [i.name]: i.value }), {});
+  return [...e.target].reduce(
+    (acc, i) => ({ ...acc, [i.name]: i.value || undefined }),
+    {}
+  );
 }
