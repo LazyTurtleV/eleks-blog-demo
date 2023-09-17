@@ -14,6 +14,7 @@ import Signup from './Pages/Signup';
 import Stories from './Pages/Stories';
 import Story from './Pages/Story';
 import Add from './Pages/Add';
+import Profile from './Pages/Profile';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'profile',
-    element: <div>Profile</div>,
+    element: <Profile />,
   },
 ]);
 
