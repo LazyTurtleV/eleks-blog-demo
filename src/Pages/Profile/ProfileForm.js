@@ -13,8 +13,6 @@ export default function ProfileForm() {
     setFormState(formValuesFromEvent(e));
   };
 
-  console.log(formState);
-
   return (
     <div className={styles.container}>
       <h1>Edit your profile</h1>
