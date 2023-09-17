@@ -43,7 +43,17 @@
         width: 640px;
         gap: 16px;
 
+        @media (width <= 900px) {
+            width: 90%;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
         .articleImage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             input {
                 position: absolute;
                 width: 0.1px;
@@ -62,6 +72,8 @@
             .imagePreview {
                 object-fit: cover;
                 width: 100%;
+                height: auto;
+                flex-shrink: 1;
             }
 
             .closeIcon {
