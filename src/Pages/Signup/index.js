@@ -99,11 +99,13 @@ export default function Signup() {
           onChange={onRepeatPasswordChange}
         />
         <input type={'submit'} value={'Create an account'} />
-        <input
-          type={'button'}
-          value={'I already have an account'}
-          onClick={() => navigate('/login')}
-        />
+        <section className={styles.additionalButtons}>
+          <input
+            type={'button'}
+            value={'I already have an account'}
+            onClick={() => navigate('/login')}
+          />
+        </section>
       </form>
     </FormContainer>
   );
