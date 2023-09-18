@@ -15,21 +15,36 @@ import Stories from './Pages/Stories';
 import Story from './Pages/Story';
 import Add from './Pages/Add';
 import Profile from './Pages/Profile';
+import GuardRoute from './Pages/Common/GuardRoute';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    loader() {
-      throw new redirect('stories');
-    },
-  },
-  {
-    path: 'stories',
-    element: <Stories />,
-  },
-  {
-    path: '/stories/:storyId',
-    element: <Story />,
+    element: <GuardRoute />,
+    children: [
+      {
+        path: '/',
+        loader() {
+          throw new redirect('stories');
+        },
+      },
+      {
+        path: 'add',
+        element: <Add />,
+      },
+      {
+        path: 'profile',
+        element: <Profile />,
+      },
+      {
+        path: 'stories',
+        element: <Stories />,
+      },
+      {
+        path: '/stories/:storyId',
+        element: <Story />,
+      },
+    ],
   },
   {
     path: 'login',
@@ -38,14 +53,6 @@ const router = createBrowserRouter([
   {
     path: 'signup',
     element: <Signup />,
-  },
-  {
-    path: 'add',
-    element: <Add />,
-  },
-  {
-    path: 'profile',
-    element: <Profile />,
   },
 ]);
 
