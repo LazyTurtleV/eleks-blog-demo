@@ -12,11 +12,9 @@ function reducer(state, action) {
   return action.payload ? action.type : state;
 }
 
-export default function useBreakpoints({
-  lowerBound,
-  upperBound,
-} = screenConfig) {
+export default function useBreakpoints() {
   const [breakpoint, dispatch] = useReducer(reducer);
+  const { lowerBound, upperBound } = screenConfig;
 
   const handleLarge = useCallback(
     (e) => {
