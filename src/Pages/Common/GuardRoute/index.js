@@ -8,7 +8,7 @@ export default function GuardRoute() {
 
   useEffect(() => {
     if (!isAuthorized) {
-      navigate('/login');
+      navigate('/signup');
     }
   }, [isAuthorized, navigate]);
 
