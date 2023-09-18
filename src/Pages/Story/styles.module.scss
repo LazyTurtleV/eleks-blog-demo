@@ -1,4 +1,9 @@
+@use 'sass:map';
+
+
 @import './../Common/common.scss';
+@import '../Common/palette.scss';
+@import '../Common/responsive.scss';
 
 .margin-above-medium {
     @media (width <= 900px) {
@@ -15,23 +20,20 @@
     p {
         padding: 0;
         margin: 0;
-        color: #5F6871;
+        color: map.get($palette, 'neutral', 700);
     }
 
     img {
         @extend .hover-animation;
+
+        height: 56px;
+        width: 56px;
     }
 
-    @media (width <= 900px) {
+    @include for-not-large {
         img {
             height: 36px;
             width: 36px;
-        }
-    }
-    @media (width >= 900px) {
-        img {
-            height: 56px;
-            width: 56px;
         }
     }
 
@@ -49,7 +51,7 @@
         display: flex;
         justify-content: space-between;
 
-        @media (width <= 900px) {
+        @include for-not-large {
             padding-top: 14px;
             padding-bottom: 14px;
             padding-left: 24px;
@@ -71,7 +73,7 @@
                 width: 21px;
             }
             h1 {
-                color: #292C31;
+                color: map.get($palette, 'neutral', 900);
                 font-size: 20px;
                 margin: 0;
             }
@@ -85,7 +87,7 @@
         margin-top: 27px;
         gap: 60px;
 
-        @media (width <= 900px) {
+        @include for-not-large {
             margin-top: 0;
             grid-template-columns: 1fr;
         }
@@ -104,7 +106,7 @@
                 img {
                     max-width: 100%;
 
-                    @media (width >= 900px) {
+                    @include for-large {
                         border-radius: 6px;
                     }
                 }
@@ -114,7 +116,7 @@
                     font-size: 36px;
                     font-family: 'PT Serif';
                     font-weight: 700;
-                    color: #292C31;
+                    color: map.get($palette, 'neutral', 900);
                     margin: 0;
                 }
                 section {
@@ -139,7 +141,7 @@
                             font-style: normal
                         }
                         time {
-                            color: #5F6871;
+                            color: map.get($palette, 'neutral', 700);
                         }
                     }
                 }

@@ -1,3 +1,9 @@
+
+@use 'sass:map';
+
+@import '../../Common/palette.scss';
+
+
 .input-container {
     display: flex;
     flex-direction: column;
@@ -5,26 +11,26 @@
     input {
         padding: 12px;
         border-radius: 4px;
-        border: 1px solid #BFC4CA;
+        border: 1px solid map.get($palette, 'neutral', 500);
         outline-color: transparent;
         transition: all .2s ease-out;
 
         &:focus {
-            outline-color:  #3884F2;
+            outline-color: map.get($palette, 'primary', 400);
             transition: all .2s ease-out;
         }
         &::placeholder {
-            color: #BFC4CA
+            color: map.get($palette, 'neutral', 500);
         }
     }
 
     .error {
-        border-color: #EB3305;
+        border-color: map.get($palette, 'danger', 500);
     }
 
     p {
         font-size: 14px;
-        color: #EB3305;
+        color: map.get($palette, 'danger', 500);
         margin: 0;
         padding: 0;
         margin-top: 5px;
@@ -38,6 +44,6 @@
         margin-bottom: 4px;
         font-weight: 400;
         font-size: 14px;
-        color: #5F6871;
+        color: map.get($palette, 'neutral', 700);
     }
 }

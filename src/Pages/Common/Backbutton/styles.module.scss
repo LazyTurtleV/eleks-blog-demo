@@ -1,4 +1,7 @@
+@use 'sass:map';
+
 @import '../common.scss';
+@import '../palette.scss';
 
 .backButton {
     @extend .hover-animation;
@@ -15,7 +18,7 @@
         width: 21px;
     }
     h1 {
-        color: #292C31;
+        color: map.get($palette, 'neutral', 900);
         font-size: 20px;
         margin: 0;
     }

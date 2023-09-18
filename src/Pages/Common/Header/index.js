@@ -8,7 +8,6 @@ import Logo from './Logo';
 import SearchBar from './Searchbar';
 import useBreakpoints from '../useBreakpoints';
 import SearchIcon from './SearchIcon';
-import screenConfig from '../Constants/screenConfig';
 
 export default function Header({
   hideSearchBar = false,
@@ -18,7 +17,7 @@ export default function Header({
   setSearchToken = () => {},
 }) {
   const navigate = useNavigate();
-  const { breakpoint } = useBreakpoints(screenConfig);
+  const { breakpoint } = useBreakpoints();
 
   const onSearchTokenChange = (e) => setSearchToken(e.target.value);
 
@@ -60,7 +59,7 @@ function SearchControl({
   searchToken,
   onSearchTokenChange,
 }) {
-  const { breakpoint } = useBreakpoints(screenConfig);
+  const { breakpoint } = useBreakpoints();
   return ['large', 'medium'].includes(breakpoint) ? (
     <SearchBar value={searchToken} onChange={onSearchTokenChange} />
   ) : (

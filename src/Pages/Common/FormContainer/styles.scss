@@ -1,3 +1,8 @@
+@use 'sass:map';
+
+@import '../../Common/palette.scss';
+@import '../../Common/responsive.scss';
+
 .container {
     display: flex;
     flex-direction: column;
@@ -5,8 +10,8 @@
     align-items: center;
     justify-content: center;
 
-    @media (min-width: 500px) {
-        background-color: #EFF0F2;
+    @include for-not-small {
+        background-color: map.get($palette, 'neutral', 200);
     }
 
     .box {
@@ -29,12 +34,12 @@
                 color: #60A1FF
             }
         
-            @media (width >= 500px) {
+            @include for-not-small {
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
             }
-            @media (width <= 500px) {
-                background-color: #052450;
+            @include for-small {
+                background-color: map.get($palette, 'primary', 900);
                 height: 60px;
                 
                 h1 {
@@ -47,13 +52,13 @@
             }
         }
 
-        @media (width >= 500px) {
+        @include for-not-small {
             width: 418px;
             border-radius: 10px;
-            border: 1px solid #DFE2E4;
-            box-shadow: 2px 2px 2px #DFE2E4;
+            border: 1px solid map.get($palette, 'neutral', 300);
+            box-shadow: 2px 2px 2px map.get($palette, 'neutral', 300);
         }
-        @media (width <= 500px) {
+        @include for-small {
             flex: 1;
             align-self: stretch;
         }
