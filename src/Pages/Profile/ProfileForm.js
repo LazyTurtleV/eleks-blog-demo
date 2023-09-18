@@ -21,7 +21,7 @@ export default function ProfileForm() {
           <InlineInput type={'text'} name={'name'} label={'First name'} />
           <InlineInput type={'text'} name={'surname'} label={'Last name'} />
           <InlineInput type={'email'} name={'email'} label={'Email'} />
-          <input type={'submit'} />
+          <input type={'submit'} value={'Update details'} />
         </form>
         <AvatarSection />
       </main>
