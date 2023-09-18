@@ -9,7 +9,8 @@
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0"
+    "react-router-dom": "^6.15.0",
+    "universal-cookie": "^6.1.1"
   },
   "scripts": {
     "web": "webpack serve --mode development",
