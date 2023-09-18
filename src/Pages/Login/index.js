@@ -83,7 +83,14 @@ export default function Login() {
         />
         <CheckboxControl />
         <input type={'submit'} value={'Log in'} />
-        <input type={'button'} value={'Forgot password?'} />
+        <section className={styles.additionalButtons}>
+          <input
+            type={'button'}
+            value={'Sign up'}
+            onClick={() => navigate('../signup')}
+          />
+          <input type={'button'} value={'Forgot password?'} />
+        </section>
       </form>
     </FormContainer>
   );
