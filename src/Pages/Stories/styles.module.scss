@@ -2,6 +2,7 @@
 
 @import '../Common/common.scss';
 @import '../Common/palette.scss';
+@import '../Common/responsive.scss';
 
 .page-wrapper {
     display: flex;
@@ -24,12 +25,12 @@
             margin-bottom: 18px;
     
     
-            @media (500px <= width <= 900px) {
+            @include for-medium {
                 grid-template-columns: 1fr 1fr;
                 margin-left: 0;
                 margin-right: 0;
             }
-            @media (width <= 500px) {
+            @include for-small {
                 grid-template-columns: 1fr;
                 margin-left: 0;
                 margin-right: 0;
@@ -73,13 +74,13 @@
                     flex-direction: column;
                     align-items: center;
     
-                    @media (width <= 700px) {
+                    @include for-not-large {
                         flex-direction: row-reverse;
                     }
     
                     img {
                         width: 100%;
-                        @media (width <= 700px) {
+                        @include for-not-large {
                             height: 62px;
                             width: 62px;
                             object-fit: cover;
@@ -141,7 +142,7 @@
             padding: 28px;
             box-shadow: 5px 5px 5px rgba(0, 0, 0 , 0.05);
     
-            @media (width <= 700px) {
+            @include for-not-large {
                 justify-content: space-between;
             }
     
