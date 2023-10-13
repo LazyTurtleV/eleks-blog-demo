@@ -199,7 +199,7 @@ class ApiMock {
     likes: 47_000,
   };
 
-  async _getObjUrl(fetchResult) {
+  async _getObjUrl(fetchResult: Response) {
     return fetchResult.blob().then((d) => URL.createObjectURL(d));
   }
 
@@ -221,7 +221,7 @@ class ApiMock {
     return this.init().then(() => this.#dataSample);
   }
 
-  async getArticle(id) {
+  async getArticle(id: string) {
     const article = JSON.parse(JSON.stringify(this.#articleSample));
     article.img = await fetch(this.#articleSample.img).then((d) =>
       this._getObjUrl(d)
