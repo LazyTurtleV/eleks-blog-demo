@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         loader() {
-          throw new redirect('stories');
+          return redirect('stories');
         },
       },
       {
