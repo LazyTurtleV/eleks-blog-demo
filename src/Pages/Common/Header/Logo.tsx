@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom';
 export default function () {
   const navigate = useNavigate();
   return (
-    <logo className={styles.logo} onClick={() => navigate('../')}>
+    <div className={styles.logo} onClick={() => navigate('../')}>
       <h1>ELEKS</h1>
       <h1>BLOG</h1>
-    </logo>
+    </div>
   );
 }
