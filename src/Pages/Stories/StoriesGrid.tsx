@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 import styles from './styles.module.scss';
 
-import likeIcon from '../../../assets/like.svg';
+import LikeIcon from '../../../assets/like.svg';
 import DataLayer from '../../Services/DataLayer';
 import { useNavigate } from 'react-router-dom';
 import LoaderHOC from '../Common/LoaderHOC';
@@ -84,7 +84,7 @@ function StoryFooter({ likes, id }: any) {
         Read more
       </button>
       <div className={styles.likeButton}>
-        <img className={styles.likeIcon} src={likeIcon} />
+        <LikeIcon className={styles.likeIcon} />
         <p>{likes} likes</p>
       </div>
     </footer>

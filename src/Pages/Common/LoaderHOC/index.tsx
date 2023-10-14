@@ -1,13 +1,13 @@
 import React from 'react';
 
 import styles from './styles.module.scss';
-import loader from '../../../../assets/loader.svg';
+import Loader from '../../../../assets/loader.svg';
 
 export default function LoaderHOC(Component: any, loading: any) {
   const LoadingWrapper = () => {
     return loading ? (
       <main className={styles.loaderContainer}>
-        <img className={styles.img} src={loader} alt={'Loading...'} />
+        <Loader className={styles.img} />
         <p className={styles.loader}>Loading...</p>
       </main>
     ) : (
