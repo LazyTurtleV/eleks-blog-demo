@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styles from './styles.module.scss';
 
-import SearchIcon from '../../../../assets/search.svg';
+import searchIcon from '../../../../assets/search.svg';
 
 export default function SearchBar({ value, onChange }: any) {
   const [isFocused, setIsFocused] = useState(false);
@@ -13,7 +13,7 @@ export default function SearchBar({ value, onChange }: any) {
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
     >
-      <SearchIcon className={styles['input-icon']} />
+      <img className={styles['input-icon']} src={searchIcon} />
       <input
         className={styles.input}
         value={value}

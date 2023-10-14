@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import useBreakpoints from '../Common/useBreakpoints';
 
-import LikeBtn from '../../../assets/like-button.svg';
-import CheckedLikeBtn from '../../../assets/like-button-checked.svg';
+import likeBtn from '../../../assets/like-button.svg';
+import checkedLikeBtn from '../../../assets/like-button-checked.svg';
 
 import styles from './styles.module.scss';
 import Backbutton from '../Common/Backbutton';
@@ -43,7 +43,7 @@ export function LikeButton({ likesNumber = 0, mobile }: any) {
       className={styles.likeBtn}
       style={!mobile ? { flexDirection: 'column', gap: '10px' } : undefined}
     >
-      {isChecked ? (<LikeBtn onClick={onClick} />) : (<CheckedLikeBtn onClick={onClick} />)}
+      <img src={isChecked ? checkedLikeBtn : likeBtn} onClick={onClick} />
       <p>{likes} likes</p>
     </aside>
   );

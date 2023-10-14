@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-import Close from '../../../assets/close.svg';
+import close from '../../../assets/close.svg';
 
 import styles from './styles.module.scss';
 
@@ -19,8 +19,9 @@ export default function ImageInput() {
       {selectedImage ? (
         <div>
           <img className={styles.imagePreview} src={selectedImage} />
-          <Close
+          <img
             className={styles.closeIcon}
+            src={close}
             onClick={() => selectImage(null)}
           />
         </div>
