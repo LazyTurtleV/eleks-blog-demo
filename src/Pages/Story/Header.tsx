@@ -8,7 +8,11 @@ import checkedLikeBtn from '../../../assets/like-button-checked.svg';
 import styles from './styles.module.scss';
 import Backbutton from '../Common/Backbutton';
 
-export default function Header({ likesNumber }: any) {
+type HeaderProps = {
+  likesNumber?: number;
+}
+
+export default function Header({ likesNumber }: HeaderProps): React.ReactElement {
   const { breakpoint } = useBreakpoints();
   return (
     <header className={styles.storyHeader}>
@@ -21,9 +25,14 @@ export default function Header({ likesNumber }: any) {
   );
 }
 
-export function LikeButton({ likesNumber = 0, mobile }: any) {
-  const [isChecked, check] = useState(false);
-  const [likes, setLikes] = useState(0);
+type LikeButtonProps = {
+  likesNumber?: number;
+  mobile?: boolean;
+}
+
+export function LikeButton({ likesNumber = 0, mobile }: LikeButtonProps): React.ReactElement {
+  const [isChecked, check] = useState<boolean>(false);
+  const [likes, setLikes] = useState<number>(0);
 
   useEffect(() => {
     setLikes(likesNumber);
@@ -31,9 +40,9 @@ export function LikeButton({ likesNumber = 0, mobile }: any) {
 
   const onClick = () => {
     if (isChecked) {
-      setLikes((p) => p - 1);
+      setLikes((p: number) => p - 1);
     } else {
-      setLikes((p) => p + 1);
+      setLikes((p: number) => p + 1);
     }
     check((p) => !p);
   };
