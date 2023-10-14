@@ -13,7 +13,7 @@ export default function SearchIcon({
         styles['search-icon'],
         isMobileSearchActive ? styles['active-search-icon'] : undefined,
       ].join(' ')}
-      onClick={() => setIsMobileSearchActive((p) => !p)}
+      onClick={() => setIsMobileSearchActive((p: boolean) => !p)}
     />
   );
 }

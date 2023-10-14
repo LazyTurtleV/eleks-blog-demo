@@ -15,7 +15,7 @@ export default function Header({
   setIsMobileSearchActive = () => {},
   searchToken = '',
   setSearchToken = (_a: any) => {},
-}) {
+}: any) {
   const navigate = useNavigate();
   const { breakpoint } = useBreakpoints();
 

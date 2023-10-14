@@ -29,7 +29,7 @@ export default function ProfileForm() {
   );
 }
 
-function formValuesFromEvent(e) {
+function formValuesFromEvent(e: any) {
   return [...e.target].reduce(
     (acc, i) => ({ ...acc, [i.name]: i.value || undefined }),
     {}
