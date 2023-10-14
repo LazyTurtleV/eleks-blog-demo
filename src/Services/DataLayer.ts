@@ -1,5 +1,5 @@
-class ApiMock {
-  #dataSample = [
+class ApiMock implements DataLayer {
+  private dataSample: Story[] = [
     {
       id: 'ed123fc4-baae-4b02-bc92-574022c1a8b1',
       author: {
@@ -181,7 +181,7 @@ class ApiMock {
     },
   ];
 
-  #articleSample = {
+  private articleSample: Story = {
     id: '',
     author: {
       name: 'Andy Gardner',
@@ -199,15 +199,15 @@ class ApiMock {
     likes: 47_000,
   };
 
-  async _getObjUrl(fetchResult: Response) {
+  private async getObjUrl(fetchResult: Response) {
     return fetchResult.blob().then((d) => URL.createObjectURL(d));
   }
 
-  async init() {
-    this.#dataSample = await Promise.all(
-      this.#dataSample.map(async (i) => {
+  private async init(): Promise<void> {
+    this.dataSample = await Promise.all(
+      this.dataSample.map(async (i) => {
         const img = i.img
-          ? await fetch(i.img).then((d) => this._getObjUrl(d))
+          ? await fetch(i.img).then((d) => this.getObjUrl(d))
           : 'https://eleks-demo-app-assets.s3.amazonaws.com/placeholder.jpg';
         return {
           ...i,
@@ -217,18 +217,18 @@ class ApiMock {
     );
   }
 
-  async getArticles() {
-    return this.init().then(() => this.#dataSample);
+  async getArticles(): Promise<Story[]> {
+    return this.init().then(() => this.dataSample);
   }
 
-  async getArticle(id: string) {
-    const article = JSON.parse(JSON.stringify(this.#articleSample));
-    article.img = await fetch(this.#articleSample.img).then((d) =>
-      this._getObjUrl(d)
+  async getArticle(id: string): Promise<Story> {
+    const article = JSON.parse(JSON.stringify(this.articleSample));
+    article.img = await fetch(this.articleSample.img as RequestInfo).then((d) =>
+      this.getObjUrl(d)
     );
     article.author.picture = await fetch(
-      this.#articleSample.author.picture
-    ).then((d) => this._getObjUrl(d));
+      this.articleSample.author.picture as RequestInfo
+    ).then((d) => this.getObjUrl(d));
     return article;
   }
 }
