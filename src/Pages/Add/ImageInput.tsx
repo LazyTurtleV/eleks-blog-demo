@@ -5,8 +5,8 @@ import close from '../../../assets/close.svg';
 import styles from './styles.module.scss';
 
 export default function ImageInput() {
-  const [selectedImage, selectImage] = useState(null);
-  const ref = useRef(null);
+  const [selectedImage, selectImage] = useState<string | null>(null);
+  const ref = useRef<HTMLInputElement>(null);
 
   return (
     <div className={styles.articleImage}>
@@ -14,7 +14,7 @@ export default function ImageInput() {
         ref={ref}
         type={'file'}
         accept={'image/png, image/jpeg'}
-        onChange={(e) => selectImage(URL.createObjectURL(e.target.files[0]))}
+        onChange={(e) => e.target.files && selectImage(URL.createObjectURL(e.target.files[0]))}
       />
       {selectedImage ? (
         <div>
@@ -29,7 +29,7 @@ export default function ImageInput() {
         <img
           className={styles.inputImage}
           src={'https://eleks-demo-app-assets.s3.amazonaws.com/placephoto.jpg'}
-          onClick={() => ref.current.click()}
+          onClick={() => ref.current && ref.current.click()}
         />
       )}
     </div>

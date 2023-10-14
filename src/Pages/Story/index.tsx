@@ -10,13 +10,21 @@ import Header, { LikeButton } from './Header';
 import styles from './styles.module.scss';
 import LoaderHOC from '../Common/LoaderHOC';
 
+type RouteParams = {
+  storyId: string;
+}
+
 export default function Story() {
-  const [story, setStory] = useState();
+  const [story, setStory] = useState<any>();
   const [loading, setLoading] = useState(true);
-  const { storyId } = useParams();
+  const { storyId } = useParams<RouteParams>();
   const { breakpoint } = useBreakpoints();
 
   useEffect(() => {
+    if (!storyId) {
+      return;
+    }
+
     DataLayer.getArticle(storyId).then((d) => {
       setStory(d);
       setLoading(false);
@@ -44,7 +52,7 @@ export default function Story() {
   );
 }
 
-function Article({ story = {} }) {
+function Article({ story = {} }: any) {
   return (
     <main className={styles.wrapper?.main}>
       <header className={styles.main?.header}>
@@ -61,7 +69,7 @@ function Article({ story = {} }) {
   );
 }
 
-function Details({ author = {}, date }) {
+function Details({ author = {}, date }: any) {
   return (
     <section className={styles.header?.section}>
       <img className={styles.section?.img} src={author.picture} />

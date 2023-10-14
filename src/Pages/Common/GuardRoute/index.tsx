@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../../Contexts/AuthContext';
 
 export default function GuardRoute() {
-  const { isAuthorized } = useAuthContext();
+  const { isAuthorized }: any = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {

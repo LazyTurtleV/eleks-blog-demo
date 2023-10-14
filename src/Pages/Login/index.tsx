@@ -15,7 +15,7 @@ const ACTION_TYPES = {
   ERROR: 'error',
 };
 
-function reducer(state, action) {
+function reducer(state: any, action: any) {
   if (Object.values(ACTION_TYPES).includes(action.type)) {
     return {
       ...state,
@@ -32,7 +32,7 @@ export default function Login() {
     'email',
     'password',
   ]);
-  const { login, subscribeOnError, isAuthorized } = useAuthContext();
+  const { login, subscribeOnError, isAuthorized }: any = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,15 +40,15 @@ export default function Login() {
     subscribeOnError(() => window.alert('Error: wrong credentials'));
   }, [subscribeOnError]);
 
-  const onEmailChange = useCallback((e) => {
+  const onEmailChange = useCallback((e: any) => {
     dispatch({ type: ACTION_TYPES.EMAIL_CHANGE, payload: e.target.value });
   }, []);
-  const onPasswordChange = useCallback((e) => {
+  const onPasswordChange = useCallback((e: any) => {
     dispatch({ type: ACTION_TYPES.PASSWORD_CHANGE, payload: e.target.value });
   }, []);
 
   const onSubmit = useCallback(
-    (e) => {
+    (e: any) => {
       e.preventDefault();
       login(state.email, state.password);
     },
@@ -96,7 +96,7 @@ export default function Login() {
   );
 }
 
-function InlineInput({ label, type, name, placeholder, onChange, errors }) {
+function InlineInput({ label, type, name, placeholder, onChange, errors }: any) {
   return (
     <span className={styles['inline-controll']}>
       <label htmlFor={name}>{label}</label>
@@ -111,7 +111,7 @@ function InlineInput({ label, type, name, placeholder, onChange, errors }) {
   );
 }
 
-function CheckboxControl({ onChange }) {
+function CheckboxControl({ onChange }: any) {
   return (
     <span className={styles['checkbox-controll']}>
       <Checkbox />

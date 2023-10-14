@@ -7,12 +7,12 @@ import DataLayer from '../../Services/DataLayer';
 import { useNavigate } from 'react-router-dom';
 import LoaderHOC from '../Common/LoaderHOC';
 
-export default function StoriesGrid({ searchToken }) {
+export default function StoriesGrid({ searchToken }: any) {
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    DataLayer.getArticles().then((d) => {
+    DataLayer.getArticles().then((d: any) => {
       setStories(d);
       setLoading(false);
     });
@@ -23,10 +23,10 @@ export default function StoriesGrid({ searchToken }) {
       LoaderHOC(
         <div className={styles['stories-grid']}>
           {stories
-            .filter((s) =>
+            .filter((s: any) =>
               s.header.toLowerCase().includes(searchToken.toLowerCase())
             )
-            .map((story, i) => (
+            .map((story: any, i) => (
               //the order will never change so index as a key is ok, I guess
               <StoryItem key={i} {...story} />
             ))}
@@ -47,7 +47,7 @@ function StoryItem({
   author: { name, picture },
   date,
   likes,
-}) {
+}: any) {
   return (
     <article className={styles.article}>
       <StoryHeader name={name} date={date} picture={picture} />
@@ -55,7 +55,7 @@ function StoryItem({
         <img className={styles.img} src={img} alt={'story_image'} />
         <div>
           <h1>{header}</h1>
-          <p article={styles.p}>{text}</p>
+          <p className={styles.p}>{text}</p>
         </div>
       </section>
       <StoryFooter likes={likes} id={id} />
@@ -63,7 +63,7 @@ function StoryItem({
   );
 }
 
-function StoryHeader({ picture, name, date }) {
+function StoryHeader({ picture, name, date }: any) {
   return (
     <header>
       <img src={picture} alt={'author_image'} />
@@ -73,7 +73,7 @@ function StoryHeader({ picture, name, date }) {
   );
 }
 
-function StoryFooter({ likes, id }) {
+function StoryFooter({ likes, id }: any) {
   const navigate = useNavigate();
   return (
     <footer>

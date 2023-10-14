@@ -8,7 +8,7 @@ import AvatarSection from './AvatarSection';
 export default function ProfileForm() {
   const [formState, setFormState] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     setFormState(formValuesFromEvent(e));
   };

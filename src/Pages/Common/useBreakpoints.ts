@@ -8,28 +8,28 @@ const BREAKPOINT_ACTION_TYPES = {
   LARGE: 'large',
 };
 
-function reducer(state, action) {
+function reducer(state: any, action: any) {
   return action.payload ? action.type : state;
 }
 
 export default function useBreakpoints() {
-  const [breakpoint, dispatch] = useReducer(reducer);
+  const [breakpoint, dispatch] = useReducer(reducer, {});
   const { lowerBound, upperBound } = screenConfig;
 
   const handleLarge = useCallback(
-    (e) => {
+    (e: any) => {
       dispatch({ type: BREAKPOINT_ACTION_TYPES.LARGE, payload: e.matches });
     },
     [dispatch]
   );
   const handleMedium = useCallback(
-    (e) => {
+    (e: any) => {
       dispatch({ type: BREAKPOINT_ACTION_TYPES.MEDIUM, payload: e.matches });
     },
     [dispatch]
   );
   const handleSmall = useCallback(
-    (e) => {
+    (e: any) => {
       dispatch({ type: BREAKPOINT_ACTION_TYPES.SMALL, payload: e.matches });
     },
     [dispatch]

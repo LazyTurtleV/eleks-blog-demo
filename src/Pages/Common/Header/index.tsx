@@ -14,12 +14,12 @@ export default function Header({
   isMobileSearchActive = false,
   setIsMobileSearchActive = () => {},
   searchToken = '',
-  setSearchToken = () => {},
+  setSearchToken = (_a: any) => {},
 }) {
   const navigate = useNavigate();
   const { breakpoint } = useBreakpoints();
 
-  const onSearchTokenChange = (e) => setSearchToken(e.target.value);
+  const onSearchTokenChange = (e: any) => setSearchToken(e.target.value);
 
   return (
     <main className={styles.main}>
@@ -58,7 +58,7 @@ function SearchControl({
   setIsMobileSearchActive,
   searchToken,
   onSearchTokenChange,
-}) {
+}: any) {
   const { breakpoint } = useBreakpoints();
   return ['large', 'medium'].includes(breakpoint) ? (
     <SearchBar value={searchToken} onChange={onSearchTokenChange} />

@@ -16,7 +16,7 @@ const ACTION_TYPES = {
   ERROR: 'error',
 };
 
-function reducer(state, action) {
+function reducer(state: any, action: any) {
   if (Object.values(ACTION_TYPES).includes(action.type)) {
     return {
       ...state,
@@ -30,10 +30,10 @@ function reducer(state, action) {
 export default function Signup() {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, {});
-  const { handleSubmit, errors = {} } = useValidation(
+  const { handleSubmit, errors = {} }: any = useValidation(
     state,
     ['name', 'email', 'password', 'repeatPassword'],
-    (stateProp) => {
+    (stateProp: any) => {
       if (stateProp.repeatPassword !== stateProp.password) {
         return {
           repeatPassword: 'The passwords should match',
@@ -42,16 +42,16 @@ export default function Signup() {
     }
   );
 
-  const onNameChange = useCallback((e) => {
+  const onNameChange = useCallback((e: any) => {
     dispatch({ type: ACTION_TYPES.NAME_CHANGE, payload: e.target.value });
   }, []);
-  const onEmailChange = useCallback((e) => {
+  const onEmailChange = useCallback((e: any) => {
     dispatch({ type: ACTION_TYPES.EMAIL_CHANGE, payload: e.target.value });
   }, []);
-  const onPasswordChange = useCallback((e) => {
+  const onPasswordChange = useCallback((e: any) => {
     dispatch({ type: ACTION_TYPES.PASSWORD_CHANGE, payload: e.target.value });
   }, []);
-  const onRepeatPasswordChange = useCallback((e) => {
+  const onRepeatPasswordChange = useCallback((e: any) => {
     dispatch({
       type: ACTION_TYPES.REPEAT_PASSWORD_CHANGE,
       payload: e.target.value,
@@ -111,7 +111,7 @@ export default function Signup() {
   );
 }
 
-function InlineInput({ label, type, name, placeholder, onChange, errors }) {
+function InlineInput({ label, type, name, placeholder, onChange, errors }: any) {
   return (
     <span className={styles['inline-controll']}>
       <label htmlFor={name}>{label}</label>

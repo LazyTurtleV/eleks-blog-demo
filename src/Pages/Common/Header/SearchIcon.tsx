@@ -6,7 +6,7 @@ import searchIcon from '../../../../assets/search.svg';
 export default function SearchIcon({
   isMobileSearchActive,
   setIsMobileSearchActive,
-}) {
+}: any) {
   return (
     <img
       src={searchIcon}

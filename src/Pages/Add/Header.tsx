@@ -4,7 +4,7 @@ import Backbutton from '../Common/Backbutton';
 import styles from './styles.module.scss';
 import { useNavigate } from 'react-router-dom';
 
-export default function Header({ publishBtnDisabled }) {
+export default function Header({ publishBtnDisabled }: any) {
   const navigate = useNavigate();
   return (
     <header className={styles.articleHeader}>

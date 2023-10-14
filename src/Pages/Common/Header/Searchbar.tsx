@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 import searchIcon from '../../../../assets/search.svg';
 
-export default function SearchBar({ value, onChange }) {
+export default function SearchBar({ value, onChange }: any) {
   const [isFocused, setIsFocused] = useState(false);
   return (
     <div

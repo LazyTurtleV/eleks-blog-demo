@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 
-export default function useValidation(state, mandarotyFields, customValidator) {
-  const [errors, setErrors] = useState({});
+export default function useValidation(state: any, mandarotyFields: any, customValidator?: any) {
+  const [errors, setErrors] = useState<any>({});
   const handleSubmit = useCallback(
-    (submit) => {
-      return (e) => {
+    (submit: any) => {
+      return (e: any) => {
         e.preventDefault();
         const emptyFields = [];
         for (const f of mandarotyFields) {

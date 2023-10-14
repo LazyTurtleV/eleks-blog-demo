@@ -8,7 +8,7 @@ export default function FormField({
   placeholder,
   errors,
   onChange,
-}) {
+}: any) {
   return (
     <div className={'input-container'}>
       <input
@@ -31,7 +31,7 @@ export function InlineInput({
   placeholder,
   onChange,
   errors,
-}) {
+}: any) {
   return (
     <span className={'inline-controll'}>
       <label htmlFor={name}>{label}</label>

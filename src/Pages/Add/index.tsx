@@ -33,6 +33,6 @@ export default function Add() {
   );
 }
 
-function getSetter(setter) {
-  return (e) => setter(e.target.value);
+function getSetter(setter: any) {
+  return (e: any) => setter(e.target.value);
 }

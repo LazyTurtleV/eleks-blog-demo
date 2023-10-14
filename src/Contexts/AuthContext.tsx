@@ -13,7 +13,7 @@ export const useAuthContext = () => useContext(Context);
 
 const cookie = new Cookie();
 
-async function requestToAuthIdentityManager({ login, password }) {
+async function requestToAuthIdentityManager({ login, password }: any) {
   if (login === 'quadro@gmail.com' && password === '1') {
     return {
       status: 200,
@@ -26,11 +26,11 @@ async function requestToAuthIdentityManager({ login, password }) {
   };
 }
 
-export function AuthContext({ children }) {
-  const [authInfo, setAuthInfo] = useState({
+export function AuthContext({ children }: any) {
+  const [authInfo, setAuthInfo] = useState<any>({
     isAuthorized: false,
   });
-  const [onErrorCallbacks, setOnErrorCallbacks] = useState([]);
+  const [onErrorCallbacks, setOnErrorCallbacks] = useState<any[]>([]);
 
   useEffect(() => {
     const auth = cookie.get('auth');
@@ -40,7 +40,7 @@ export function AuthContext({ children }) {
   }, [setAuthInfo]);
 
   const login = useCallback(
-    (loginVar, password) => {
+    (loginVar: any, password: any) => {
       requestToAuthIdentityManager({ login: loginVar, password })
         .then(({ access_token }) => {
           setAuthInfo({
@@ -58,7 +58,7 @@ export function AuthContext({ children }) {
     [onErrorCallbacks]
   );
 
-  const subscribeOnError = useCallback((callback) => {
+  const subscribeOnError = useCallback((callback: any) => {
     setOnErrorCallbacks((p) => [...p, callback]);
   }, []);
 

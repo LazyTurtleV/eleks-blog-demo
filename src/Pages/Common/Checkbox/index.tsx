@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles.scss';
 
-export default function Checkbox({ onChange }) {
+export default function Checkbox({ onChange }: any) {
   return (
     <input
       type={'checkbox'}

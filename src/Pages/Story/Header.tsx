@@ -8,7 +8,7 @@ import checkedLikeBtn from '../../../assets/like-button-checked.svg';
 import styles from './styles.module.scss';
 import Backbutton from '../Common/Backbutton';
 
-export default function Header({ likesNumber }) {
+export default function Header({ likesNumber }: any) {
   const { breakpoint } = useBreakpoints();
   return (
     <header className={styles.storyHeader}>
@@ -21,7 +21,7 @@ export default function Header({ likesNumber }) {
   );
 }
 
-export function LikeButton({ likesNumber = 0, mobile }) {
+export function LikeButton({ likesNumber = 0, mobile }: any) {
   const [isChecked, check] = useState(false);
   const [likes, setLikes] = useState(0);
 

@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './styles.module.scss';
 import loader from '../../../../assets/loader.svg';
 
-export default function LoaderHOC(Component, loading) {
+export default function LoaderHOC(Component: any, loading: any) {
   const LoadingWrapper = () => {
     return loading ? (
       <main className={styles.loaderContainer}>
