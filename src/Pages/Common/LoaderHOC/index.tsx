@@ -3,8 +3,8 @@ import React from 'react';
 import styles from './styles.module.scss';
 import loader from '../../../../assets/loader.svg';
 
-export default function LoaderHOC(Component: React.ComponentType, loading: boolean) {
-  const LoadingWrapper = () => {
+export default function LoaderHOC(Component: React.ReactElement, loading: boolean): React.FC<{}> {
+  const LoadingWrapper: React.FC<{}> = () => {
     return loading ? (
       <main className={styles.loaderContainer}>
         <img className={styles.img} src={loader} alt={'Loading...'} />
@@ -15,7 +15,7 @@ export default function LoaderHOC(Component: React.ComponentType, loading: boole
     );
   };
   LoadingWrapper.displayName = `LoadingWrapper(${
-    Component.displayName || Component.name || 'Component'
+    (Component as unknown as React.FC<{}>).displayName || (Component as unknown as React.FC<{}>).name || 'Component'
   })`;
 
   return LoadingWrapper;

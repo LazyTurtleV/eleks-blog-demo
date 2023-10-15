@@ -32,16 +32,16 @@ export default function FormField({
   );
 }
 
-type InlineInputProps = FormFieldProps & {
+type InlineInputProps = Partial<FormFieldProps> & {
   label: string;
 };
 
 export function InlineInput({
   label,
-  type,
-  name,
-  placeholder,
-  onChange,
+  type = 'text',
+  name = '',
+  placeholder = '',
+  onChange = (e: React.ChangeEvent<HTMLInputElement>) => {},
   errors,
 }: InlineInputProps) {
   return (
