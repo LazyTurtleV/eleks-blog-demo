@@ -11,6 +11,8 @@ type Story = {
     img?: string;
 }
 
+type SetStateAction<T> = T | ((prev: T) => T)
+
 type DataLayer = {
     getArticles(): Promise<Story[]>;
     getArticle(id: string): Promise<Story>;

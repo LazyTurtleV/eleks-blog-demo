@@ -10,8 +10,8 @@ type SearchIconProps = {
 
 export default function SearchIcon({
   isMobileSearchActive,
-  setIsMobileSearchActive,
-}: SearchIconProps) {
+  setIsMobileSearchActive = (a: SetStateAction<boolean>) => {},
+}: Partial<SearchIconProps>) {
   return (
     <img
       src={searchIcon}

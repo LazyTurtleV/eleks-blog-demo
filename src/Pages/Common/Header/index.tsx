@@ -17,8 +17,6 @@ type HeaderProps = {
   setSearchToken?: React.Dispatch<React.SetStateAction<string>>,
 }
 
-type SetStateAction<T> = T | ((prev: T) => T)
-
 export default function Header({
   hideSearchBar = false,
   isMobileSearchActive = false,
