@@ -5,10 +5,16 @@ import { InlineInput } from '../Common/FormField';
 import styles from './styles.module.scss';
 import AvatarSection from './AvatarSection';
 
-export default function ProfileForm() {
-  const [formState, setFormState] = useState({});
+type FormState = {
+  name?: string;
+  surname?: string;
+  email?: string;
+}
 
-  const handleSubmit = (e: any) => {
+export default function ProfileForm() {
+  const [formState, setFormState] = useState<FormState>({});
+
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState(formValuesFromEvent(e));
   };
@@ -29,7 +35,7 @@ export default function ProfileForm() {
   );
 }
 
-function formValuesFromEvent(e: any) {
+function formValuesFromEvent(e: React.SyntheticEvent<HTMLFormElement> & any): FormState {
   return [...e.target].reduce(
     (acc, i) => ({ ...acc, [i.name]: i.value || undefined }),
     {}

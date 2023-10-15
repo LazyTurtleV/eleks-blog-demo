@@ -8,6 +8,9 @@
       "strict": true /* Enable all strict type-checking options. */,
       "skipLibCheck": true /* Skip type checking all .d.ts files. */,
       "outDir": "dist",
+      "lib": [
+        "es5", "es6", "dom", "dom.iterable"
+      ],
       "moduleResolution": "node"
     },
     "include": ["**/*.ts", "**/*.tsx"],
