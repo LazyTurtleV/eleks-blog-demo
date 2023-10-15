@@ -9,17 +9,27 @@ import SearchBar from './Searchbar';
 import useBreakpoints from '../useBreakpoints';
 import SearchIcon from './SearchIcon';
 
+type HeaderProps = {
+  hideSearchBar?: boolean;
+  isMobileSearchActive?: boolean;
+  setIsMobileSearchActive?: React.Dispatch<React.SetStateAction<boolean>>,
+  searchToken?: string;
+  setSearchToken?: React.Dispatch<React.SetStateAction<string>>,
+}
+
+type SetStateAction<T> = T | ((prev: T) => T)
+
 export default function Header({
   hideSearchBar = false,
   isMobileSearchActive = false,
   setIsMobileSearchActive = () => {},
   searchToken = '',
-  setSearchToken = (_a: any) => {},
-}: any) {
+  setSearchToken = (a: SetStateAction<string>) => {},
+}: HeaderProps) {
   const navigate = useNavigate();
   const { breakpoint } = useBreakpoints();
 
-  const onSearchTokenChange = (e: any) => setSearchToken(e.target.value);
+  const onSearchTokenChange = (e: React.ChangeEvent<HTMLInputElement>) => setSearchToken(e.target.value);
 
   return (
     <main className={styles.main}>
@@ -53,12 +63,16 @@ export default function Header({
   );
 }
 
+type SearchControlProps = Partial<HeaderProps> & {
+  onSearchTokenChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
 function SearchControl({
   isMobileSearchActive,
   setIsMobileSearchActive,
   searchToken,
   onSearchTokenChange,
-}: any) {
+}: SearchControlProps) {
   const { breakpoint } = useBreakpoints();
   return ['large', 'medium'].includes(breakpoint) ? (
     <SearchBar value={searchToken} onChange={onSearchTokenChange} />

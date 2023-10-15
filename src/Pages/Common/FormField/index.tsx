@@ -2,13 +2,21 @@ import React from 'react';
 
 import './styles.scss';
 
+type FormFieldProps = {
+  type: string;
+  name: string;
+  placeholder: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  errors?: string;
+}
+
 export default function FormField({
   type,
   name,
   placeholder,
   errors,
   onChange,
-}: any) {
+}: FormFieldProps) {
   return (
     <div className={'input-container'}>
       <input
@@ -24,6 +32,10 @@ export default function FormField({
   );
 }
 
+type InlineInputProps = FormFieldProps & {
+  label: string;
+};
+
 export function InlineInput({
   label,
   type,
@@ -31,7 +43,7 @@ export function InlineInput({
   placeholder,
   onChange,
   errors,
-}: any) {
+}: InlineInputProps) {
   return (
     <span className={'inline-controll'}>
       <label htmlFor={name}>{label}</label>

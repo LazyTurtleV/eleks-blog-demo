@@ -4,7 +4,12 @@ import styles from './styles.module.scss';
 
 import searchIcon from '../../../../assets/search.svg';
 
-export default function SearchBar({ value, onChange }: any) {
+type SearchBarProps = {
+  value?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export default function SearchBar({ value, onChange }: SearchBarProps) {
   const [isFocused, setIsFocused] = useState(false);
   return (
     <div
