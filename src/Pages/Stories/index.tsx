@@ -8,8 +8,8 @@ import StoriesGridHeader from './StoriesGridHeader';
 import useBreakpoints from '../Common/useBreakpoints';
 
 export default function Stories() {
-  const [isMobileSearchActive, setIsMobileSearchActive] = useState(false);
-  const [searchToken, setSearchToken] = useState('');
+  const [isMobileSearchActive, setIsMobileSearchActive] = useState<boolean>(false);
+  const [searchToken, setSearchToken] = useState<string>('');
   const { breakpoint } = useBreakpoints();
 
   const shouldStoriesHeaderRender =

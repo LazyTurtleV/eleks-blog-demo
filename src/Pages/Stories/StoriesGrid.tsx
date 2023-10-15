@@ -7,12 +7,16 @@ import DataLayer from '../../Services/DataLayer';
 import { useNavigate } from 'react-router-dom';
 import LoaderHOC from '../Common/LoaderHOC';
 
-export default function StoriesGrid({ searchToken }: any) {
-  const [stories, setStories] = useState([]);
-  const [loading, setLoading] = useState(true);
+type StoriesGridProps = {
+  searchToken: string;
+}
+
+export default function StoriesGrid({ searchToken }: StoriesGridProps) {
+  const [stories, setStories] = useState<Story[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    DataLayer.getArticles().then((d: any) => {
+    DataLayer.getArticles().then((d: Story[]) => {
       setStories(d);
       setLoading(false);
     });
@@ -23,10 +27,10 @@ export default function StoriesGrid({ searchToken }: any) {
       LoaderHOC(
         <div className={styles['stories-grid']}>
           {stories
-            .filter((s: any) =>
+            .filter((s: Story) =>
               s.header.toLowerCase().includes(searchToken.toLowerCase())
             )
-            .map((story: any, i) => (
+            .map((story: Story, i: number) => (
               //the order will never change so index as a key is ok, I guess
               <StoryItem key={i} {...story} />
             ))}
@@ -47,10 +51,10 @@ function StoryItem({
   author: { name, picture },
   date,
   likes,
-}: any) {
+}: Story) {
   return (
     <article className={styles.article}>
-      <StoryHeader name={name} date={date} picture={picture} />
+      <StoryHeader name={name} date={date} picture={picture as string} />
       <section className={styles.articleBody}>
         <img className={styles.img} src={img} alt={'story_image'} />
         <div>
@@ -63,7 +67,13 @@ function StoryItem({
   );
 }
 
-function StoryHeader({ picture, name, date }: any) {
+type StoryHeaderProps = {
+  picture: string;
+  name: string;
+  date: string;
+}
+
+function StoryHeader({ picture, name, date }: StoryHeaderProps) {
   return (
     <header>
       <img src={picture} alt={'author_image'} />
@@ -73,13 +83,13 @@ function StoryHeader({ picture, name, date }: any) {
   );
 }
 
-function StoryFooter({ likes, id }: any) {
+function StoryFooter({ likes, id }: Partial<Story>) {
   const navigate = useNavigate();
   return (
     <footer>
       <button
         className={styles.readMoreBtn}
-        onClick={() => navigate(encodeURI(id))}
+        onClick={() => navigate(encodeURI(id as string))}
       >
         Read more
       </button>
