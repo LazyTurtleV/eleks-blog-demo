@@ -105,7 +105,7 @@ export default function Login() {
   );
 }
 
-function InlineInput({ label, type, name, placeholder, onChange, errors }: any) {
+function InlineInput({ label, type, name, placeholder, onChange, errors }: InlineInputProps) {
   return (
     <span className={styles['inline-controll']}>
       <label htmlFor={name}>{label}</label>
@@ -120,10 +120,10 @@ function InlineInput({ label, type, name, placeholder, onChange, errors }: any) 
   );
 }
 
-function CheckboxControl({ onChange }: any) {
+function CheckboxControl({ onChange = (e) => {} }: { onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void }) {
   return (
     <span className={styles['checkbox-controll']}>
-      <Checkbox />
+      <Checkbox onChange={onChange} />
       <label>Remember me</label>
     </span>
   );

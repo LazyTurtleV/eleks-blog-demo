@@ -120,15 +120,6 @@ export default function Signup() {
   );
 }
 
-type InlineInputProps = {
-  label: string;
-  type: string;
-  name: string;
-  placeholder: string;
-  errors: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
 function InlineInput({ label, type, name, placeholder, onChange, errors }: InlineInputProps) {
   return (
     <span className={styles['inline-controll']}>
