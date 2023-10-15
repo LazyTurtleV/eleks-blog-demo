@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import avatar from '../../../assets/avatar.png';
-import Attachment from '../../../assets/attachment.svg';
+import attachment from '../../../assets/attachment.svg';
 
 import styles from './styles.module.scss';
 
@@ -17,7 +17,7 @@ export default function AvatarSection() {
       />
       <img src={file || avatar} />
       <button className={styles.editButton} onClick={() => ref?.current?.click()}>
-        <Attachment />
+      <img src={attachment} />
         <p>Edit avatar</p>
       </button>
     </section>
