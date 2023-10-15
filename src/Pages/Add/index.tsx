@@ -7,8 +7,8 @@ import useResizableTextarea from '../Common/useResizableTextarea';
 import ImageInput from './ImageInput';
 
 export default function Add() {
-  const [text, setText] = useState('');
-  const [title, setTitle] = useState('');
+  const [text, setText] = useState<string>('');
+  const [title, setTitle] = useState<string>('');
   const ref = useResizableTextarea(text);
 
   return (
@@ -33,6 +33,6 @@ export default function Add() {
   );
 }
 
-function getSetter(setter: any) {
-  return (e: any) => setter(e.target.value);
+function getSetter(setter: React.Dispatch<React.SetStateAction<string>>) {
+  return (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setter(e.target.value);
 }
