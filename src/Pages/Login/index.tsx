@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useReducer } from 'react';
+import React, { Reducer, useCallback, useEffect, useReducer } from 'react';
 
 import styles from './styles.module.scss';
 
@@ -9,13 +9,22 @@ import FormField from '../Common/FormField';
 import Checkbox from '../Common/Checkbox';
 import useValidation from '../Common/useValidation';
 
-const ACTION_TYPES = {
-  EMAIL_CHANGE: 'email',
-  PASSWORD_CHANGE: 'password',
-  ERROR: 'error',
+enum ACTION_TYPES {
+  EMAIL_CHANGE = 'email',
+  PASSWORD_CHANGE = 'password',
+  ERROR = 'error',
 };
 
-function reducer(state: any, action: any) {
+type Action = {
+  type: ACTION_TYPES;
+  payload: string;
+}
+
+type State = {
+  [k in ACTION_TYPES]?: string;
+}
+
+function reducer(state: State, action: Action) {
   if (Object.values(ACTION_TYPES).includes(action.type)) {
     return {
       ...state,
@@ -27,7 +36,7 @@ function reducer(state: any, action: any) {
 }
 
 export default function Login() {
-  const [state, dispatch] = useReducer(reducer, {});
+  const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, {});
   const { handleSubmit, errors = {} } = useValidation(state, [
     'email',
     'password',
@@ -40,15 +49,15 @@ export default function Login() {
     subscribeOnError(() => window.alert('Error: wrong credentials'));
   }, [subscribeOnError]);
 
-  const onEmailChange = useCallback((e: any) => {
+  const onEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: ACTION_TYPES.EMAIL_CHANGE, payload: e.target.value });
   }, []);
-  const onPasswordChange = useCallback((e: any) => {
+  const onPasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: ACTION_TYPES.PASSWORD_CHANGE, payload: e.target.value });
   }, []);
 
   const onSubmit = useCallback(
-    (e: any) => {
+    (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       login(state.email, state.password);
     },
