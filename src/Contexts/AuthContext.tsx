@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import Cookie from 'universal-cookie';
 
-type ErrCallback = (err: Error) => void;
+type ErrCallback = (err: unknown) => void;
 
 type AuthContext = {
   isAuthorized: boolean;
@@ -63,7 +63,7 @@ export function AuthContext({ children }: any) {
           });
           cookie.set('auth', access_token);
         })
-        .catch((err: Error) => {
+        .catch((err: unknown) => {
           for (const callback of onErrorCallbacks) {
             callback(err);
           }

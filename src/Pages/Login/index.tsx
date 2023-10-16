@@ -41,7 +41,7 @@ export default function Login() {
     'email',
     'password',
   ]);
-  const { login, subscribeOnError, isAuthorized }: any = useAuthContext();
+  const { login, subscribeOnError, isAuthorized } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function Login() {
   const onSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      login(state.email, state.password);
+      login(state.email as string, state.password as string);
     },
     [state, login]
   );
