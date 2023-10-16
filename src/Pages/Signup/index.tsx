@@ -52,7 +52,7 @@ export default function Signup() {
           name={'name'}
           type={'text'}
           placeholder={'Enter your name'}
-          errors={formik.errors.name as string}
+          errors={formik.errors.name}
           onChange={formik.handleChange}
         />
         <InlineInput
@@ -60,7 +60,7 @@ export default function Signup() {
           name={'email'}
           type={'email'}
           placeholder={'Enter your email'}
-          errors={formik.errors.email as string}
+          errors={formik.errors.email}
           onChange={formik.handleChange}
         />
         <InlineInput
@@ -68,7 +68,7 @@ export default function Signup() {
           type={'password'}
           name={'password'}
           placeholder={'Enter your password'}
-          errors={formik.errors.password as string}
+          errors={formik.errors.password}
           onChange={formik.handleChange}
         />
         <InlineInput
@@ -76,7 +76,7 @@ export default function Signup() {
           type={'password'}
           name={'repeatPassword'}
           placeholder={'Re-enter your password'}
-          errors={formik.errors.repeatPassword as string}
+          errors={formik.errors.repeatPassword}
           onChange={formik.handleChange}
         />
         <input type={'submit'} value={'Create an account'} />
