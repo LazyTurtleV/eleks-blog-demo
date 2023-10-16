@@ -1,4 +1,6 @@
 import React, { Reducer, useCallback, useEffect, useReducer } from 'react';
+import * as Yup from 'yup';
+import { useFormik, FormikProps, FormikErrors } from 'formik';
 
 import styles from './styles.module.scss';
 
@@ -9,60 +11,34 @@ import FormField from '../Common/FormField';
 import Checkbox from '../Common/Checkbox';
 import useValidation from '../Common/useValidation';
 
-enum ACTION_TYPES {
-  EMAIL_CHANGE = 'email',
-  PASSWORD_CHANGE = 'password',
-  ERROR = 'error',
+type State = {
+  email: string;
+  password: string;
 };
 
-type Action = {
-  type: ACTION_TYPES;
-  payload: string;
-}
-
-type State = {
-  [k in ACTION_TYPES]?: string;
-}
-
-function reducer(state: State, action: Action) {
-  if (Object.values(ACTION_TYPES).includes(action.type)) {
-    return {
-      ...state,
-      [action.type]: action.payload,
-    };
-  }
-
-  return state;
-}
+const ValidationSchema = Yup.object().shape({
+  email: Yup.string().required('Email is required'),
+  password: Yup.string().required('Password is required'),
+});
 
 export default function Login() {
-  const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, {});
-  const { handleSubmit, errors = {} } = useValidation(state, [
-    'email',
-    'password',
-  ]);
-  const { login, subscribeOnError, isAuthorized } = useAuthContext();
   const navigate = useNavigate();
+  const formik: FormikProps<State> = useFormik<State>({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: ValidationSchema,
+    onSubmit: (values: State) => {
+      login(values.email, values.password);
+    }
+  });
+  const { login, subscribeOnError, isAuthorized } = useAuthContext();
 
   useEffect(() => {
     // eslint-disable-next-line no-alert
     subscribeOnError(() => window.alert('Error: wrong credentials'));
   }, [subscribeOnError]);
-
-  const onEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: ACTION_TYPES.EMAIL_CHANGE, payload: e.target.value });
-  }, []);
-  const onPasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: ACTION_TYPES.PASSWORD_CHANGE, payload: e.target.value });
-  }, []);
-
-  const onSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      login(state.email as string, state.password as string);
-    },
-    [state, login]
-  );
 
   useEffect(() => {
     if (isAuthorized) {
@@ -72,22 +48,22 @@ export default function Login() {
 
   return (
     <FormContainer>
-      <form className={styles['login-form']} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles['login-form']} onSubmit={formik.handleSubmit}>
         <h1>Log in</h1>
         <InlineInput
           label={'Email'}
           name={'email'}
           type={'email'}
           placeholder={'Enter your email'}
-          errors={errors.email}
-          onChange={onEmailChange}
+          errors={formik.errors.email}
+          onChange={formik.handleChange}
         />
         <InlineInput
           label={'Password'}
           type={'password'}
           name={'password'}
-          errors={errors.password}
-          onChange={onPasswordChange}
+          errors={formik.errors.password}
+          onChange={formik.handleChange}
           placeholder={'Enter your password'}
         />
         <CheckboxControl />
