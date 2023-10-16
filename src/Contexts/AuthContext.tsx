@@ -45,7 +45,7 @@ async function requestToAuthIdentityManager({ login, password }: AIMRequest): Pr
   };
 }
 
-export function AuthContext({ children }: { children: React.ReactNode } }) {
+export function AuthContext({ children }: { children: React.ReactNode }) {
   const [authInfo, setAuthInfo] = useState<Omit<AuthContext, "login"|"subscribeOnError">>({
     isAuthorized: false,
   });
