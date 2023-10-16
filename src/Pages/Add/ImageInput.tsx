@@ -19,9 +19,9 @@ export default function ImageInput() {
       {selectedImage ? (
         <div>
           <img className={styles.imagePreview} src={selectedImage} />
-          <img
+          <span
             className={styles.closeIcon}
-            src={close}
+            style={{ backgroundImage: `url(${close})` }}
             onClick={() => selectImage(null)}
           />
         </div>
@@ -29,6 +29,7 @@ export default function ImageInput() {
         <img
           className={styles.inputImage}
           src={'https://eleks-demo-app-assets.s3.amazonaws.com/placephoto.jpg'}
+          style={{ backgroundImage: 'url(https://eleks-demo-app-assets.s3.amazonaws.com/placephoto.jpg)' }}
           onClick={() => ref.current && ref.current.click()}
         />
       )}

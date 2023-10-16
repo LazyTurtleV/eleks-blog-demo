@@ -94,7 +94,7 @@ function StoryFooter({ likes, id }: Partial<Story>) {
         Read more
       </button>
       <div className={styles.likeButton}>
-        <img className={styles.likeIcon} src={likeIcon} />
+        <span className={styles.likeIcon} style={{ backgroundImage: `url(${likeIcon})` }} />
         <p>{likes} likes</p>
       </div>
     </footer>

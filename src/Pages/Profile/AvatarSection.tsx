@@ -17,7 +17,7 @@ export default function AvatarSection() {
       />
       <img src={file || avatar} />
       <button className={styles.editButton} onClick={() => ref?.current?.click()}>
-      <img src={attachment} />
+        <span style={{ backgroundImage: `url(${attachment})`}} />
         <p>Edit avatar</p>
       </button>
     </section>

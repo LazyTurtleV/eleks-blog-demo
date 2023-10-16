@@ -13,8 +13,10 @@ export default function SearchIcon({
   setIsMobileSearchActive = (a: SetStateAction<boolean>) => {},
 }: Partial<SearchIconProps>) {
   return (
-    <img
-      src={searchIcon}
+    <span
+      style={{
+        backgroundImage: `url(${searchIcon})`,
+      }}
       className={[
         styles['search-icon'],
         isMobileSearchActive ? styles['active-search-icon'] : undefined,

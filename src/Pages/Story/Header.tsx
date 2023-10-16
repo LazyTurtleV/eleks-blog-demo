@@ -52,7 +52,7 @@ export function LikeButton({ likesNumber = 0, mobile }: LikeButtonProps): React.
       className={styles.likeBtn}
       style={!mobile ? { flexDirection: 'column', gap: '10px' } : undefined}
     >
-      <img src={isChecked ? checkedLikeBtn : likeBtn} onClick={onClick} />
+      <span style={{backgroundImage: `url(${isChecked ? checkedLikeBtn : likeBtn})`}} onClick={onClick} />
       <p>{likes} likes</p>
     </aside>
   );

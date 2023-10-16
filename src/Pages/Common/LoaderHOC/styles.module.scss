@@ -10,9 +10,10 @@
         font-size: 26px;
         margin: 0;
     }
-    img {
+    span {
         width: 50px;
         height: 50px;
+        background-size: 50px;
         stroke-width: 3px;
         animation: spin infinite 1s linear;
     }

@@ -18,7 +18,7 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
     >
-      <img className={styles['input-icon']} src={searchIcon} />
+      <span className={styles['input-icon']} style={{ backgroundImage: `url(${searchIcon})`}} />
       <input
         className={styles.input}
         value={value}
