@@ -9,7 +9,6 @@ import { useAuthContext } from '../../Contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import FormField from '../Common/FormField';
 import Checkbox from '../Common/Checkbox';
-import useValidation from '../Common/useValidation';
 
 type State = {
   email: string;
