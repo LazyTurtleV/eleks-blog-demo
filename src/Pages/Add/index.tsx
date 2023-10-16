@@ -9,7 +9,7 @@ import ImageInput from './ImageInput';
 export default function Add() {
   const [text, setText] = useState<string>('');
   const [title, setTitle] = useState<string>('');
-  const ref = useResizableTextarea(text);
+  const ref = useResizableTextarea<string>(text);
 
   return (
     <div className={styles.container}>

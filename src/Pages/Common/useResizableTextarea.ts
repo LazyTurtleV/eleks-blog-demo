@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function useResizableTextarea(value: any) {
+export default function useResizableTextarea<T>(value: T) {
   const ref = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {

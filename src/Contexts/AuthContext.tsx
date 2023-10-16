@@ -27,7 +27,12 @@ type AIMResponse = {
   access_token?: string;
 }
 
-async function requestToAuthIdentityManager({ login, password }: any): Promise<AIMResponse> {
+type AIMRequest = {
+  login: string;
+  password: string;
+}
+
+async function requestToAuthIdentityManager({ login, password }: AIMRequest): Promise<AIMResponse> {
   if (login === 'quadro@gmail.com' && password === '1') {
     return {
       status: 200,
@@ -40,7 +45,7 @@ async function requestToAuthIdentityManager({ login, password }: any): Promise<A
   };
 }
 
-export function AuthContext({ children }: any) {
+export function AuthContext({ children }: { children: React.ReactNode } }) {
   const [authInfo, setAuthInfo] = useState<Omit<AuthContext, "login"|"subscribeOnError">>({
     isAuthorized: false,
   });
