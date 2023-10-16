@@ -1,111 +1,83 @@
-import React, { Reducer, useCallback, useReducer } from 'react';
 import { useNavigate } from 'react-router';
+import * as Yup from 'yup';
+import { useFormik, FormikProps, FormikErrors } from 'formik';
 
 import styles from '../Login/styles.module.scss';
 
 import FormContainer from '../Common/FormContainer';
 import FormField from '../Common/FormField';
 
-import useValidation from '../Common/useValidation';
-
-enum ACTION_TYPES {
-  NAME_CHANGE = 'name',
-  EMAIL_CHANGE= 'email',
-  PASSWORD_CHANGE = 'password',
-  REPEAT_PASSWORD_CHANGE = 'repeatPassword',
-  ERROR = 'error',
-};
-
-type Action = {
-  type: ACTION_TYPES;
-  payload: string;
-}
-
 type State = {
-  [k in ACTION_TYPES]?: string;
+  name: string;
+  email: string;
+  password: string;
+  repeatPassword: string;
 }
 
-function reducer(state: State, action: Action) {
-  if (Object.values(ACTION_TYPES).includes(action.type)) {
-    return {
-      ...state,
-      [action.type]: action.payload,
-    };
-  }
-
-  return state;
-}
+const ValidationSchema = Yup.object().shape({
+  name: Yup.string().required('Name is required'),
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  password: Yup.string().required('Password is required'),
+  repeatPassword: Yup.string().required('Repeat password is required'),
+});
 
 export default function Signup() {
   const navigate = useNavigate();
-  const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, {});
-  const { handleSubmit, errors = {} }: any = useValidation(
-    state,
-    ['name', 'email', 'password', 'repeatPassword'],
-    (stateProp: any) => {
-      if (stateProp.repeatPassword !== stateProp.password) {
-        return {
-          repeatPassword: 'The passwords should match',
-        };
+  const formik: FormikProps<State> = useFormik<State>({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+      repeatPassword: '',
+    },
+    validationSchema: ValidationSchema,
+    validate: (values: State) => {
+      const errors: FormikErrors<State> = {};
+
+      if (values.password !== values.repeatPassword) {
+        errors.repeatPassword = 'Passwords do not match';
       }
+    },
+    onSubmit: () => {
+      navigate('/login');
     }
-  );
-
-  const onNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: ACTION_TYPES.NAME_CHANGE, payload: e.target.value });
-  }, []);
-  const onEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: ACTION_TYPES.EMAIL_CHANGE, payload: e.target.value });
-  }, []);
-  const onPasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: ACTION_TYPES.PASSWORD_CHANGE, payload: e.target.value });
-  }, []);
-  const onRepeatPasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({
-      type: ACTION_TYPES.REPEAT_PASSWORD_CHANGE,
-      payload: e.target.value,
-    });
-  }, []);
-
-  const submit = useCallback(() => {
-    navigate('/login');
-  }, [navigate]);
+  });
 
   return (
     <FormContainer>
-      <form className={styles['login-form']} onSubmit={handleSubmit(submit)}>
+      <form className={styles['login-form']} onSubmit={formik.handleSubmit}>
         <h1>Create an account</h1>
         <InlineInput
           label={'Name'}
           name={'name'}
           type={'text'}
           placeholder={'Enter your name'}
-          errors={errors.name}
-          onChange={onNameChange}
+          errors={formik.errors.name}
+          onChange={formik.handleChange}
         />
         <InlineInput
           label={'Email'}
           name={'email'}
           type={'email'}
           placeholder={'Enter your email'}
-          errors={errors.email}
-          onChange={onEmailChange}
+          errors={formik.errors.email}
+          onChange={formik.handleChange}
         />
         <InlineInput
           label={'Password'}
           type={'password'}
           name={'password'}
           placeholder={'Enter your password'}
-          errors={errors.password}
-          onChange={onPasswordChange}
+          errors={formik.errors.password}
+          onChange={formik.handleChange}
         />
         <InlineInput
           label={'Repeat password'}
           type={'password'}
           name={'repeatPassword'}
           placeholder={'Re-enter your password'}
-          errors={errors.repeatPassword}
-          onChange={onRepeatPasswordChange}
+          errors={formik.errors.repeatPassword}
+          onChange={formik.handleChange}
         />
         <input type={'submit'} value={'Create an account'} />
         <section className={styles.additionalButtons}>
