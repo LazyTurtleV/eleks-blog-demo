@@ -3,10 +3,15 @@ import React from 'react';
 import styles from './styles.module.scss';
 import searchIcon from '../../../../assets/search.svg';
 
+type SearchIconProps = {
+  isMobileSearchActive: boolean;
+  setIsMobileSearchActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default function SearchIcon({
   isMobileSearchActive,
-  setIsMobileSearchActive,
-}) {
+  setIsMobileSearchActive = (a: SetStateAction<boolean>) => {},
+}: Partial<SearchIconProps>) {
   return (
     <img
       src={searchIcon}
@@ -14,7 +19,7 @@ export default function SearchIcon({
         styles['search-icon'],
         isMobileSearchActive ? styles['active-search-icon'] : undefined,
       ].join(' ')}
-      onClick={() => setIsMobileSearchActive((p) => !p)}
+      onClick={() => setIsMobileSearchActive((p: boolean) => !p)}
     />
   );
 }

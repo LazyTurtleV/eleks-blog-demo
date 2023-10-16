@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from 'react';
+import React, { Reducer, useCallback, useReducer } from 'react';
 import { useNavigate } from 'react-router';
 
 import styles from '../Login/styles.module.scss';
@@ -8,15 +8,24 @@ import FormField from '../Common/FormField';
 
 import useValidation from '../Common/useValidation';
 
-const ACTION_TYPES = {
-  NAME_CHANGE: 'name',
-  EMAIL_CHANGE: 'email',
-  PASSWORD_CHANGE: 'password',
-  REPEAT_PASSWORD_CHANGE: 'repeatPassword',
-  ERROR: 'error',
+enum ACTION_TYPES {
+  NAME_CHANGE = 'name',
+  EMAIL_CHANGE= 'email',
+  PASSWORD_CHANGE = 'password',
+  REPEAT_PASSWORD_CHANGE = 'repeatPassword',
+  ERROR = 'error',
 };
 
-function reducer(state, action) {
+type Action = {
+  type: ACTION_TYPES;
+  payload: string;
+}
+
+type State = {
+  [k in ACTION_TYPES]?: string;
+}
+
+function reducer(state: State, action: Action) {
   if (Object.values(ACTION_TYPES).includes(action.type)) {
     return {
       ...state,
@@ -29,11 +38,11 @@ function reducer(state, action) {
 
 export default function Signup() {
   const navigate = useNavigate();
-  const [state, dispatch] = useReducer(reducer, {});
-  const { handleSubmit, errors = {} } = useValidation(
+  const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, {});
+  const { handleSubmit, errors = {} }: any = useValidation(
     state,
     ['name', 'email', 'password', 'repeatPassword'],
-    (stateProp) => {
+    (stateProp: any) => {
       if (stateProp.repeatPassword !== stateProp.password) {
         return {
           repeatPassword: 'The passwords should match',
@@ -42,16 +51,16 @@ export default function Signup() {
     }
   );
 
-  const onNameChange = useCallback((e) => {
+  const onNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: ACTION_TYPES.NAME_CHANGE, payload: e.target.value });
   }, []);
-  const onEmailChange = useCallback((e) => {
+  const onEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: ACTION_TYPES.EMAIL_CHANGE, payload: e.target.value });
   }, []);
-  const onPasswordChange = useCallback((e) => {
+  const onPasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: ACTION_TYPES.PASSWORD_CHANGE, payload: e.target.value });
   }, []);
-  const onRepeatPasswordChange = useCallback((e) => {
+  const onRepeatPasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: ACTION_TYPES.REPEAT_PASSWORD_CHANGE,
       payload: e.target.value,
@@ -111,7 +120,7 @@ export default function Signup() {
   );
 }
 
-function InlineInput({ label, type, name, placeholder, onChange, errors }) {
+function InlineInput({ label, type, name, placeholder, onChange, errors }: InlineInputProps) {
   return (
     <span className={styles['inline-controll']}>
       <label htmlFor={name}>{label}</label>

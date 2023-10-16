@@ -7,12 +7,16 @@ import DataLayer from '../../Services/DataLayer';
 import { useNavigate } from 'react-router-dom';
 import LoaderHOC from '../Common/LoaderHOC';
 
-export default function StoriesGrid({ searchToken }) {
-  const [stories, setStories] = useState([]);
-  const [loading, setLoading] = useState(true);
+type StoriesGridProps = {
+  searchToken: string;
+}
+
+export default function StoriesGrid({ searchToken }: StoriesGridProps) {
+  const [stories, setStories] = useState<Story[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    DataLayer.getArticles().then((d) => {
+    DataLayer.getArticles().then((d: Story[]) => {
       setStories(d);
       setLoading(false);
     });
@@ -23,10 +27,10 @@ export default function StoriesGrid({ searchToken }) {
       LoaderHOC(
         <div className={styles['stories-grid']}>
           {stories
-            .filter((s) =>
+            .filter((s: Story) =>
               s.header.toLowerCase().includes(searchToken.toLowerCase())
             )
-            .map((story, i) => (
+            .map((story: Story, i: number) => (
               //the order will never change so index as a key is ok, I guess
               <StoryItem key={i} {...story} />
             ))}
@@ -47,15 +51,15 @@ function StoryItem({
   author: { name, picture },
   date,
   likes,
-}) {
+}: Story) {
   return (
     <article className={styles.article}>
-      <StoryHeader name={name} date={date} picture={picture} />
+      <StoryHeader name={name} date={date} picture={picture as string} />
       <section className={styles.articleBody}>
         <img className={styles.img} src={img} alt={'story_image'} />
         <div>
           <h1>{header}</h1>
-          <p article={styles.p}>{text}</p>
+          <p className={styles.p}>{text}</p>
         </div>
       </section>
       <StoryFooter likes={likes} id={id} />
@@ -63,7 +67,13 @@ function StoryItem({
   );
 }
 
-function StoryHeader({ picture, name, date }) {
+type StoryHeaderProps = {
+  picture: string;
+  name: string;
+  date: string;
+}
+
+function StoryHeader({ picture, name, date }: StoryHeaderProps) {
   return (
     <header>
       <img src={picture} alt={'author_image'} />
@@ -73,13 +83,13 @@ function StoryHeader({ picture, name, date }) {
   );
 }
 
-function StoryFooter({ likes, id }) {
+function StoryFooter({ likes, id }: Partial<Story>) {
   const navigate = useNavigate();
   return (
     <footer>
       <button
         className={styles.readMoreBtn}
-        onClick={() => navigate(encodeURI(id))}
+        onClick={() => navigate(encodeURI(id as string))}
       >
         Read more
       </button>

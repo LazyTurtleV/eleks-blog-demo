@@ -17,6 +17,10 @@ module.exports = {
     port: 3030,
     historyApiFallback: true,
   },
+  resolve: {
+    // Add `.ts` and `.tsx` as a resolvable extension.
+    extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
+  },
   module: {
     rules: [
       {
@@ -24,6 +28,13 @@ module.exports = {
         exclude: /node_modules/, // excluding the node_modules folder
         use: {
           loader: 'babel-loader',
+        },
+      },
+      {
+        test: /\.(ts|tsx)$/, // .js and .jsx files
+        exclude: /node_modules/, // excluding the node_modules folder
+        use: {
+          loader: 'ts-loader',
         },
       },
       {

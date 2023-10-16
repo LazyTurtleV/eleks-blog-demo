@@ -2,34 +2,39 @@ import { useCallback, useEffect, useReducer } from 'react';
 
 import screenConfig from './Constants/screenConfig';
 
-const BREAKPOINT_ACTION_TYPES = {
-  SMALL: 'small',
-  MEDIUM: 'medium',
-  LARGE: 'large',
+enum BREAKPOINT_ACTION_TYPES {
+  SMALL = 'small',
+  MEDIUM = 'medium',
+  LARGE = 'large',
 };
 
-function reducer(state, action) {
+type Action = {
+  type: BREAKPOINT_ACTION_TYPES;
+  payload: boolean;
+}
+
+function reducer(state: BREAKPOINT_ACTION_TYPES, action: Action) {
   return action.payload ? action.type : state;
 }
 
 export default function useBreakpoints() {
-  const [breakpoint, dispatch] = useReducer(reducer);
+  const [breakpoint, dispatch] = useReducer<React.Reducer<BREAKPOINT_ACTION_TYPES, Action>>(reducer, BREAKPOINT_ACTION_TYPES.LARGE);
   const { lowerBound, upperBound } = screenConfig;
 
   const handleLarge = useCallback(
-    (e) => {
+    (e: MediaQueryListEvent) => {
       dispatch({ type: BREAKPOINT_ACTION_TYPES.LARGE, payload: e.matches });
     },
     [dispatch]
   );
   const handleMedium = useCallback(
-    (e) => {
+    (e: MediaQueryListEvent) => {
       dispatch({ type: BREAKPOINT_ACTION_TYPES.MEDIUM, payload: e.matches });
     },
     [dispatch]
   );
   const handleSmall = useCallback(
-    (e) => {
+    (e: MediaQueryListEvent) => {
       dispatch({ type: BREAKPOINT_ACTION_TYPES.SMALL, payload: e.matches });
     },
     [dispatch]

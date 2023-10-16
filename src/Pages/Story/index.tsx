@@ -10,13 +10,21 @@ import Header, { LikeButton } from './Header';
 import styles from './styles.module.scss';
 import LoaderHOC from '../Common/LoaderHOC';
 
-export default function Story() {
-  const [story, setStory] = useState();
-  const [loading, setLoading] = useState(true);
-  const { storyId } = useParams();
+type RouteParams = {
+  storyId: string;
+}
+
+export default function Story(): React.ReactElement {
+  const [story, setStory] = useState<Story>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const { storyId } = useParams<RouteParams>();
   const { breakpoint } = useBreakpoints();
 
   useEffect(() => {
+    if (!storyId) {
+      return;
+    }
+
     DataLayer.getArticle(storyId).then((d) => {
       setStory(d);
       setLoading(false);
@@ -28,7 +36,7 @@ export default function Story() {
       LoaderHOC(
         <article className={styles.wrapper}>
           {breakpoint === 'large' && <LikeButton likesNumber={story?.likes} />}
-          <Article story={story} />
+          <Article story={story!} />
         </article>,
         loading
       ),
@@ -44,7 +52,11 @@ export default function Story() {
   );
 }
 
-function Article({ story = {} }) {
+type ArticleProps = {
+  story: Story;
+}
+
+function Article({ story }: ArticleProps): React.ReactElement {
   return (
     <main className={styles.wrapper?.main}>
       <header className={styles.main?.header}>
@@ -61,12 +73,12 @@ function Article({ story = {} }) {
   );
 }
 
-function Details({ author = {}, date }) {
+function Details({ author, date }: Partial<Story>): React.ReactElement {
   return (
     <section className={styles.header?.section}>
-      <img className={styles.section?.img} src={author.picture} />
+      <img className={styles.section?.img} src={author?.picture} />
       <main className={styles.section?.main}>
-        <cite className={styles.main?.cite}>{author.name}</cite>
+        <cite className={styles.main?.cite}>{author?.name}</cite>
         <time className={styles.main?.time}>{date}</time>
       </main>
     </section>

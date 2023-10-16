@@ -7,13 +7,32 @@ import React, {
 } from 'react';
 import Cookie from 'universal-cookie';
 
-export const Context = createContext({});
+type ErrCallback = (err: unknown) => void;
 
-export const useAuthContext = () => useContext(Context);
+type AuthContext = {
+  isAuthorized: boolean;
+  access_token?: string;
+  subscribeOnError: (callback: ErrCallback) => void;
+  login: (login: string, password: string) => void;
+}
+
+export const Context = createContext<AuthContext>({} as AuthContext);
+
+export const useAuthContext = (): AuthContext => useContext<AuthContext>(Context);
 
 const cookie = new Cookie();
 
-async function requestToAuthIdentityManager({ login, password }) {
+type AIMResponse = {
+  status: number;
+  access_token?: string;
+}
+
+type AIMRequest = {
+  login: string;
+  password: string;
+}
+
+async function requestToAuthIdentityManager({ login, password }: AIMRequest): Promise<AIMResponse> {
   if (login === 'quadro@gmail.com' && password === '1') {
     return {
       status: 200,
@@ -26,11 +45,11 @@ async function requestToAuthIdentityManager({ login, password }) {
   };
 }
 
-export function AuthContext({ children }) {
-  const [authInfo, setAuthInfo] = useState({
+export function AuthContext({ children }: { children: React.ReactNode } }) {
+  const [authInfo, setAuthInfo] = useState<Omit<AuthContext, "login"|"subscribeOnError">>({
     isAuthorized: false,
   });
-  const [onErrorCallbacks, setOnErrorCallbacks] = useState([]);
+  const [onErrorCallbacks, setOnErrorCallbacks] = useState<ErrCallback[]>([]);
 
   useEffect(() => {
     const auth = cookie.get('auth');
@@ -40,7 +59,7 @@ export function AuthContext({ children }) {
   }, [setAuthInfo]);
 
   const login = useCallback(
-    (loginVar, password) => {
+    (loginVar: string, password: string) => {
       requestToAuthIdentityManager({ login: loginVar, password })
         .then(({ access_token }) => {
           setAuthInfo({
@@ -49,7 +68,7 @@ export function AuthContext({ children }) {
           });
           cookie.set('auth', access_token);
         })
-        .catch((err) => {
+        .catch((err: unknown) => {
           for (const callback of onErrorCallbacks) {
             callback(err);
           }
@@ -58,7 +77,7 @@ export function AuthContext({ children }) {
     [onErrorCallbacks]
   );
 
-  const subscribeOnError = useCallback((callback) => {
+  const subscribeOnError = useCallback((callback: ErrCallback) => {
     setOnErrorCallbacks((p) => [...p, callback]);
   }, []);
 
