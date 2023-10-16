@@ -24,6 +24,6 @@ type InlineInputProps = {
     type: string;
     name: string;
     placeholder: string;
-    errors: string;
+    errors?: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
