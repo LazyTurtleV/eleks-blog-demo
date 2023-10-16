@@ -7,7 +7,7 @@ export default function LoaderHOC(Component: React.ReactElement, loading: boolea
   const LoadingWrapper: React.FC<{}> = () => {
     return loading ? (
       <main className={styles.loaderContainer}>
-        <img className={styles.img} src={loader} alt={'Loading...'} />
+        <span className={styles.span} style={{ backgroundImage: `url(${loader})` }} />
         <p className={styles.loader}>Loading...</p>
       </main>
     ) : (

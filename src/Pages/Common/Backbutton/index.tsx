@@ -9,7 +9,7 @@ export default function Backbutton() {
   const navigate = useNavigate();
   return (
     <button className={styles.backButton} onClick={() => navigate('/stories')}>
-      <img className={styles.backButton.img} src={arrowLeft} alt={'Back'} />
+      <span style={{ backgroundImage: `url(${arrowLeft})` }} className={styles.backButton.span}/>
       <h1 className={styles.backButton.h1}>All stories</h1>
     </button>
   );

@@ -23,7 +23,7 @@
         color: map.get($palette, 'neutral', 700);
     }
 
-    img {
+    span {
         @extend .hover-animation;
 
         height: 56px;
