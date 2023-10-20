@@ -54,16 +54,18 @@ function StoryItem({
 }: Story) {
   return (
     <article className={styles.article}>
-      <StoryHeader name={name} date={date} picture={picture as string} />
-      <section className={styles.articleBody}>
-        <div className={styles.imgWrapper}>
-          <img className={styles.img} src={img} alt={'story_image'} />
-        </div>
-        <div>
-          <h1>{header}</h1>
-          <p className={styles.p}>{text}</p>
-        </div>
-      </section>
+      <main>
+        <StoryHeader name={name} date={date} picture={picture as string} />
+        <section className={styles.articleBody}>
+          <div className={styles.imgWrapper}>
+            <img className={styles.img} src={img} alt={'story_image'} />
+          </div>
+          <div>
+            <h1>{header}</h1>
+            <p className={styles.p}>{text}</p>
+          </div>
+        </section>
+      </main>
       <StoryFooter likes={likes} id={id} />
     </article>
   );
