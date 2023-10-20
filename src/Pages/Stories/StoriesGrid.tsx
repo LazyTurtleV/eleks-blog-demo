@@ -56,7 +56,9 @@ function StoryItem({
     <article className={styles.article}>
       <StoryHeader name={name} date={date} picture={picture as string} />
       <section className={styles.articleBody}>
-        <img className={styles.img} src={img} alt={'story_image'} />
+        <div className={styles.imgWrapper}>
+          <img className={styles.img} src={img} alt={'story_image'} />
+        </div>
         <div>
           <h1>{header}</h1>
           <p className={styles.p}>{text}</p>

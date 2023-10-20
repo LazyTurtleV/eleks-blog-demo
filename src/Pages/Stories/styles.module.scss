@@ -73,20 +73,35 @@
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    width: 100%;
     
                     @include for-not-large {
                         flex-direction: row-reverse;
                     }
-    
-                    img {
-                        width: 100%;
-                        @include for-not-large {
-                            height: 62px;
-                            width: 62px;
-                            object-fit: cover;
-                            margin-left: 24px;
+
+                    .imgWrapper {
+                        @include for-large {
+                            display: block;
+                            position: relative;
+                            width: 100%;
+                            overflow: hidden;
+                            min-height: 100px;
+                        }
+
+                        img {
+                            position: absolute;
+                            height: 100%;
+
+                            @include for-not-large {
+                                position: relative;
+                                height: 62px;
+                                width: 62px;
+                                object-fit: cover;
+                                margin-left: 24px;
+                            }
                         }
                     }
+    
                     p {
                         font-size: 14px;
                         text-overflow: ellipsis;

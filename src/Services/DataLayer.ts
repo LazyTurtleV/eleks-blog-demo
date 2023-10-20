@@ -21,7 +21,7 @@ class ApiMock implements DataLayer {
         picture: 'https://picsum.photos/seed/269/42',
       },
       date: '2 July 2020',
-      img: 'https://picsum.photos/seed/2/283/100',
+      img: 'https://picsum.photos/seed/2/400/100',
       header: 'How TikTok Is Rewriting the World',
       text: `Hello, person who is, statistically speaking, 
       a human adult aged approximately “millennial” to “boomer.” 
@@ -37,7 +37,7 @@ class ApiMock implements DataLayer {
         picture: 'https://picsum.photos/seed/270/42',
       },
       date: '2 July 2020',
-      img: 'https://picsum.photos/seed/3/283/100',
+      img: 'https://picsum.photos/seed/3/400/100',
       header: 'The hardest roles in tech',
       text: `To save companies some money, companies are saying 
       that designers need to have other hard skills, 
@@ -52,7 +52,7 @@ class ApiMock implements DataLayer {
         picture: 'https://picsum.photos/seed/271/42',
       },
       date: '2 July 2020',
-      img: 'https://picsum.photos/seed/4/283/100',
+      img: 'https://picsum.photos/seed/4/400/100',
       header: 'Business Owners to Benefit from Listern Audio Platform',
       text: `TBusiness owners who play music all day long can benefit from 
       Listern’s unique rewards mechanism. A spa business usually plays 
@@ -66,7 +66,7 @@ class ApiMock implements DataLayer {
         picture: 'https://picsum.photos/seed/272/42',
       },
       date: '2 July 2020',
-      img: 'https://picsum.photos/seed/5/283/100',
+      img: 'https://picsum.photos/seed/5/400/100',
       header: 'How TikTok Is Rewriting the World',
       text: `Hello, person who is, statistically speaking, 
       a human adult aged approximately “millennial” to “boomer.” 
@@ -82,7 +82,7 @@ class ApiMock implements DataLayer {
         picture: 'https://picsum.photos/seed/273/42',
       },
       date: '2 July 2020',
-      img: 'https://picsum.photos/seed/6/283/100',
+      img: 'https://picsum.photos/seed/6/400/100',
       header: 'The hardest roles in tech',
       text: `To save companies some money, companies are saying 
       that designers need to have other hard skills, 
@@ -111,7 +111,7 @@ class ApiMock implements DataLayer {
         picture: 'https://picsum.photos/seed/274/42',
       },
       date: '2 July 2020',
-      img: 'https://picsum.photos/seed/8/283/100',
+      img: 'https://picsum.photos/seed/8/400/100',
       header: 'How TikTok Is Rewriting the World',
       text: `Hello, person who is, statistically speaking, 
       a human adult aged approximately “millennial” to “boomer.” 
@@ -127,7 +127,7 @@ class ApiMock implements DataLayer {
         picture: 'https://picsum.photos/seed/275/42',
       },
       date: '2 July 2020',
-      img: 'https://picsum.photos/seed/9/283/100',
+      img: 'https://picsum.photos/seed/9/400/100',
       header: 'The way to save yourself financially',
       text: `The solution to this problem is different for everybody. 
             How much money you invest in each asset class depends on your 
@@ -142,7 +142,7 @@ class ApiMock implements DataLayer {
         picture: 'https://picsum.photos/seed/276/42',
       },
       date: '2 July 2020',
-      img: 'https://picsum.photos/seed/10/283/100',
+      img: 'https://picsum.photos/seed/10/400/100',
       header: 'The way to save yourself financially',
       text: `The solution to this problem is different for everybody. 
             How much money you invest in each asset class depends on your 
@@ -171,7 +171,7 @@ class ApiMock implements DataLayer {
         picture: 'https://picsum.photos/seed/278/42',
       },
       date: '2 July 2020',
-      img: 'https://picsum.photos/seed/12/283/100',
+      img: 'https://picsum.photos/seed/12/400/100',
       header: 'The way to save yourself financially',
       text: `The solution to this problem is different for everybody. 
             How much money you invest in each asset class depends on your 
