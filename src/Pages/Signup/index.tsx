@@ -37,6 +37,8 @@ export default function Signup() {
       if (values.password !== values.repeatPassword) {
         errors.repeatPassword = 'Passwords do not match';
       }
+
+      return errors;
     },
     onSubmit: () => {
       navigate('/login');
