@@ -89,8 +89,12 @@
                         }
 
                         img {
+                            min-width: 100%;
+                            min-height: 100%;
                             position: absolute;
-                            height: 100%;
+                            left: 50%;
+                            top: 50%;
+                            transform: translateX(-50%) translateY(-50%);
 
                             @include for-not-large {
                                 position: relative;
