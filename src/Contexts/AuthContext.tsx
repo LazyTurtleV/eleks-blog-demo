@@ -16,9 +16,17 @@ type AuthContext = {
   login: (login: string, password: string) => void;
 }
 
-export const Context = createContext<AuthContext>({} as AuthContext);
+export const Context = createContext<AuthContext | undefined>(undefined);
 
-export const useAuthContext = (): AuthContext => useContext<AuthContext>(Context);
+export const useAuthContext = (): AuthContext => {
+  const ctx = useContext<AuthContext | undefined>(Context);
+
+  if (ctx === undefined) {
+    throw new Error('useAuthContext must be used within a AuthContext');
+  }
+
+  return ctx;
+};
 
 const cookie = new Cookie();
 
